@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { parse } from 'csv-parse/browser/esm/sync';
+import { Options, parse } from 'csv-parse/browser/esm/sync';
 import { DayUsage } from './day-usage';
 
 @Injectable({
@@ -15,7 +15,11 @@ export class CsvParserService {
   }
 
   public parseCsvString(csv: string): Record<string, string>[] {
-    return parse(csv, {columns: true});
+    const options: Options = {
+      columns: true,
+    };
+
+    return parse(csv, options);
   }
 
   public transform(csvItems: Record<string, string>[]): DayUsage[] {
@@ -26,14 +30,10 @@ export class CsvParserService {
       if (!CsvParserService.FLOAT_TESTER.test(csvItem['Hourly Total'])) {
         continue;
       }
-      if (!CsvParserService.FLOAT_TESTER.test(csvItem['Daily Total'])) {
-        continue;
-      }
 
       const item: DayUsage = {
         date: new Date(`${csvItem['Day']} ${csvItem['Hour of Day']}`),
         energyHour: parseFloat(csvItem['Hourly Total']),
-        energyDay: parseFloat(csvItem['Daily Total']),
       };
       items.push(item);
     }

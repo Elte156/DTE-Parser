@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { CsvParserService } from './csv-parser.service';
+import { DayUsage } from './day-usage';
 
 describe('CsvParserService', () => {
   let service: CsvParserService;
@@ -15,6 +16,11 @@ describe('CsvParserService', () => {
     '"0000 000 0000 0","0000000","06/24/2022","12:00 AM","1.33","18.7810","kWh"\n' +
     '"0000 000 0000 0","0000000","06/24/2022","1:00 AM","No Data","No Data","kWh"\n' +
     '"0000 000 0000 0","0000000","06/24/2022","2:00 AM","0.444","18.7810","kWh"';
+
+  const mockCsvWithNoOptionalColumns =
+    '"Day","Hour of Day","Hourly Total"\n' +
+    '"06/24/2022","12:00 AM","1.55"\n' +
+    '"06/24/2022","1:00 AM","0.666"';
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -53,16 +59,14 @@ describe('CsvParserService', () => {
   });
 
   it('should transform CSV items to DayUsage items', () => {
-    const expected = [
+    const expected: DayUsage[] = [
       {
         date: new Date('2022-06-24T00:00:00'),
         energyHour: 1.11,
-        energyDay: 18.7810,
       },
       {
         date: new Date('2022-06-24T01:00:00'),
         energyHour: 0.999,
-        energyDay: 18.7810,
       },
     ];
 
@@ -73,20 +77,36 @@ describe('CsvParserService', () => {
   });
 
   it('should handle CSV items that have [No Data] for values', () => {
-    const expected = [
+    const expected: DayUsage[] = [
       {
         date: new Date('2022-06-24T00:00:00'),
         energyHour: 1.33,
-        energyDay: 18.7810,
       },
       {
         date: new Date('2022-06-24T02:00:00'),
         energyHour: 0.444,
-        energyDay: 18.7810,
       },
     ];
 
     const input = service.parseCsvString(mockCsvWithNoData);
+    const actual = service.transform(input);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('should handle CSV items that have missing optional columns', () => {
+    const expected: DayUsage[] = [
+      {
+        date: new Date('2022-06-24T00:00:00'),
+        energyHour: 1.55,
+      },
+      {
+        date: new Date('2022-06-24T01:00:00'),
+        energyHour: 0.666,
+      },
+    ];
+
+    const input = service.parseCsvString(mockCsvWithNoOptionalColumns);
     const actual = service.transform(input);
 
     expect(actual).toEqual(expected);

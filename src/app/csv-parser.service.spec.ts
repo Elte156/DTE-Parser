@@ -22,6 +22,17 @@ describe('CsvParserService', () => {
     '"06/24/2022","12:00 AM","1.55"\n' +
     '"06/24/2022","1:00 AM","0.666"';
 
+  const mockCsvWithMalformedData =
+    '"Day","Hour of Day","Hourly Total"\n' +
+    '"ABC","12:00 AM","1.55"\n' +
+    '"06/24/2022","ABC","1.55"\n' +
+    '"06/24/2022","12:00 AM","ABC"\n' +
+    '"07/01/2022","1:00 AM","0.777"';
+
+  const mockCsvWithMissingColumns =
+    '"06/24/2022","12:00 AM","1.55"\n' +
+    '"06/24/2022","1:00 AM","0.666"';
+
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(CsvParserService);
@@ -107,6 +118,29 @@ describe('CsvParserService', () => {
     ];
 
     const input = service.parseCsvString(mockCsvWithNoOptionalColumns);
+    const actual = service.transform(input);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('should handle CSV items that have malformed data', () => {
+    const expected: DayUsage[] = [
+      {
+        date: new Date('2022-07-01T01:00:00'),
+        energyHour: 0.777,
+      },
+    ];
+
+    const input = service.parseCsvString(mockCsvWithMalformedData);
+    const actual = service.transform(input);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('should handle CSV items that have no columns', () => {
+    const expected: DayUsage[] = [];
+
+    const input = service.parseCsvString(mockCsvWithMissingColumns);
     const actual = service.transform(input);
 
     expect(actual).toEqual(expected);

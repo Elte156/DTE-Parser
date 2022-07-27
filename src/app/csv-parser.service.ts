@@ -35,6 +35,13 @@ export class CsvParserService {
         date: new Date(`${csvItem['Day']} ${csvItem['Hour of Day']}`),
         energyHour: parseFloat(csvItem['Hourly Total']),
       };
+
+      // Check against Date parsing an validity
+      // Source: https://stackoverflow.com/a/1353711/1583548
+      if (isNaN(item.date.getTime())) {
+        continue;
+      }
+
       items.push(item);
     }
     return items;

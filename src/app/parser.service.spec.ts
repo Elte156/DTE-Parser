@@ -46,4 +46,15 @@ describe('ParserService', () => {
 
     expect(actual.length).toEqual(expected);
   });
+
+  it('should get the sum of a specific hour for specific days in a specific month', () => {
+    const expected = 2.88; // 2 days and their sum for noon
+
+    let data = service.filterByYearAndMonth(mockData, 2022, 6);
+    data = service.filterByDayOfWeek(data, 5);
+    data = service.filterByHourOfDay(data, 12);
+    const actual = service.sum(data);
+
+    expect(actual).toEqual(expected);
+  });
 });

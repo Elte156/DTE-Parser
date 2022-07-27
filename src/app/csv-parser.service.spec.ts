@@ -10,6 +10,12 @@ describe('CsvParserService', () => {
     '"0000 000 0000 0","0000000","06/24/2022","12:00 AM","1.11","18.7810","kWh"\n' +
     '"0000 000 0000 0","0000000","06/24/2022","1:00 AM","0.999","18.7810","kWh"';
 
+  const mockCsvWithNoData =
+    '"Account Number","Meter Number","Day","Hour of Day","Hourly Total","Daily Total","Unit of Measurement"\n' +
+    '"0000 000 0000 0","0000000","06/24/2022","12:00 AM","1.33","18.7810","kWh"\n' +
+    '"0000 000 0000 0","0000000","06/24/2022","1:00 AM","No Data","No Data","kWh"\n' +
+    '"0000 000 0000 0","0000000","06/24/2022","2:00 AM","0.444","18.7810","kWh"';
+
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(CsvParserService);
@@ -61,6 +67,26 @@ describe('CsvParserService', () => {
     ];
 
     const input = service.parseCsvString(mockCsv);
+    const actual = service.transform(input);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('should handle CSV items that have [No Data] for values', () => {
+    const expected = [
+      {
+        date: new Date('2022-06-24T00:00:00'),
+        energyHour: 1.33,
+        energyDay: 18.7810,
+      },
+      {
+        date: new Date('2022-06-24T02:00:00'),
+        energyHour: 0.444,
+        energyDay: 18.7810,
+      },
+    ];
+
+    const input = service.parseCsvString(mockCsvWithNoData);
     const actual = service.transform(input);
 
     expect(actual).toEqual(expected);

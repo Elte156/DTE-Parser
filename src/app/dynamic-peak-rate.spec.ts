@@ -178,4 +178,29 @@ describe('DynamicPeakRate', () => {
       });
     });
   });
+
+  describe('getLaborDay', () => {
+    const testCases = [
+      { year: 2017, result: new Date('09/04/2017') },
+      { year: 2018, result: new Date('09/03/2018') },
+      { year: 2019, result: new Date('09/02/2019') },
+      { year: 2020, result: new Date('09/07/2020') },
+      { year: 2021, result: new Date('09/06/2021') },
+      { year: 2022, result: new Date('09/05/2022') },
+      { year: 2023, result: new Date('09/04/2023') },
+      { year: 2024, result: new Date('09/02/2024') },
+      { year: 2025, result: new Date('09/01/2025') },
+      { year: 2026, result: new Date('09/07/2026') },
+      { year: 2027, result: new Date('09/06/2027') },
+      { year: 2028, result: new Date('09/04/2028') },
+      { year: 2029, result: new Date('09/03/2029') },
+    ];
+
+    testCases.forEach((test) => {
+      it(`should get the date for year ${test.year}`, () => {
+        const actual = sut.getLaborDay(test.year);
+        expect(actual).toEqual(test.result);
+      });
+    });
+  });
 });

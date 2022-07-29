@@ -54,7 +54,7 @@ export class DynamicPeakRate implements Rate {
   }
 
   /**
-   * Get Memorial Date date
+   * Get Memorial Day date
    * Source: https://stackoverflow.com/a/15507916/1583548
    * @param year
    * @returns
@@ -79,12 +79,46 @@ export class DynamicPeakRate implements Rate {
 
     // Memorial Day always last Monday of May
     const d = new Date();
-    if (year) { d.setFullYear(year); }
+    d.setFullYear(year);
     d.setDate(1); // Roll to the first day of ...
     d.setMonth(5 || d.getMonth() + 1); // ... the next month.
     do { // Roll the days backwards until Monday.
       d.setDate(d.getDate() - 1);
     } while (d.getDay() !== 1);
+    return new Date(d.toDateString());
+  }
+
+  /**
+   * Get Labor Day date
+   * @param year
+   * @returns
+   */
+  getLaborDay(year: number): Date {
+    // // Look up table
+    const lookUp = [
+      { year: 2020, date: '09/07/2020' },
+      { year: 2021, date: '09/06/2021' },
+      { year: 2022, date: '09/05/2022' },
+      { year: 2023, date: '09/04/2023' },
+      { year: 2024, date: '09/02/2024' },
+      { year: 2025, date: '09/01/2025' },
+      { year: 2026, date: '09/07/2026' },
+      { year: 2027, date: '09/06/2027' },
+      { year: 2028, date: '09/04/2028' },
+    ];
+    const dateString = lookUp.find((item) => item.year === year)?.date;
+    if (dateString) {
+      return new Date(dateString);
+    }
+
+    // Labor Day always falls on the first Monday in September
+    const d = new Date();
+    d.setFullYear(year);
+    d.setDate(1); // Roll to the first day of ...
+    d.setMonth(8);
+    while (d.getDay() !== 1) {
+      d.setDate(d.getDate() + 1);
+    }
     return new Date(d.toDateString());
   }
 }

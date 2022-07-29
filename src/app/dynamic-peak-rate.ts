@@ -10,6 +10,8 @@ export class DynamicPeakRate implements Rate {
   }
 
   getRate(datetime: Date): number {
+    const dateWithoutTime = new Date(datetime.toDateString());
+
     // Weekend check
     if (datetime.getDay() === 6 || datetime.getDay() === 0) {
       return DynamicPeakRate.RATE_OFF_PEAK;
@@ -21,13 +23,25 @@ export class DynamicPeakRate implements Rate {
       return DynamicPeakRate.RATE_OFF_PEAK;
     }
     // Good Friday
+    if (this.getGoodFriday(datetime.getFullYear()).getTime() === dateWithoutTime.getTime() ) {
+      return DynamicPeakRate.RATE_OFF_PEAK;
+    }
     // Memorial Day
+    if (this.getMemorialDay(datetime.getFullYear()).getTime() === dateWithoutTime.getTime() ) {
+      return DynamicPeakRate.RATE_OFF_PEAK;
+    }
     // Independence Day
     if (datetime.getMonth() === 6 && datetime.getDate() === 4) {
       return DynamicPeakRate.RATE_OFF_PEAK;
     }
     // Labor Day
+    if (this.getLaborDay(datetime.getFullYear()).getTime() === dateWithoutTime.getTime() ) {
+      return DynamicPeakRate.RATE_OFF_PEAK;
+    }
     // Thanksgiving Day
+    if (this.getThanksgivingDay(datetime.getFullYear()).getTime() === dateWithoutTime.getTime() ) {
+      return DynamicPeakRate.RATE_OFF_PEAK;
+    }
     // Christmas Day
     if (datetime.getMonth() === 11 && datetime.getDate() === 25) {
       return DynamicPeakRate.RATE_OFF_PEAK;

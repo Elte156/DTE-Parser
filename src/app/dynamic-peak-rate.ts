@@ -6,7 +6,15 @@ export class DynamicPeakRate implements Rate {
   public static readonly RATE_ON_PEAK = 0.23;
 
   getRateName(datetime: Date): string {
-      throw new Error("Method not implemented.");
+    const rate = this.getRate(datetime);
+    switch (rate) {
+      case DynamicPeakRate.RATE_ON_PEAK:
+        return 'On-Peak';
+        case DynamicPeakRate.RATE_MID_PEAK:
+          return 'Mid-Peak';
+      default:
+        return 'Off-Peak';
+    }
   }
 
   getRate(datetime: Date): number {
@@ -64,7 +72,20 @@ export class DynamicPeakRate implements Rate {
   }
 
   getRateDescription(datetime: Date): string {
-      throw new Error("Method not implemented.");
+    const rate = this.getRate(datetime);
+    switch (rate) {
+      case DynamicPeakRate.RATE_ON_PEAK:
+        return 'On-Peak (3PM-7PM)';
+      case DynamicPeakRate.RATE_MID_PEAK:
+        if (datetime.getHours() >= 7 && datetime.getHours() < 15) {
+          return 'Mid-Peak (7AM-3PM)';
+        }
+        else {
+          return 'Mid-Peak (7PM-11PM)';
+        }
+      default:
+        return 'Off-Peak (11PM-7AM)';
+    }
   }
 
   /**

@@ -228,4 +228,29 @@ describe('DynamicPeakRate', () => {
       });
     });
   });
+
+  describe('getGoodFriday', () => {
+    const testCases = [
+      { year: 2017, result: new Date('04/14/2017') },
+      { year: 2018, result: new Date('03/30/2018') },
+      { year: 2019, result: new Date('04/19/2019') },
+      { year: 2020, result: new Date('04/10/2020') },
+      { year: 2021, result: new Date('04/02/2021') },
+      { year: 2022, result: new Date('04/15/2022') },
+      { year: 2023, result: new Date('04/07/2023') },
+      { year: 2024, result: new Date('03/29/2024') },
+      { year: 2025, result: new Date('04/18/2025') },
+      { year: 2026, result: new Date('04/03/2026') },
+      { year: 2027, result: new Date('03/26/2027') },
+      { year: 2028, result: new Date('04/14/2028') },
+      { year: 2029, result: new Date('03/30/2029') },
+    ];
+
+    testCases.forEach((test) => {
+      it(`should get the date for year ${test.year}`, () => {
+        const actual = sut.getGoodFriday(test.year);
+        expect(actual).toEqual(test.result);
+      });
+    });
+  });
 });

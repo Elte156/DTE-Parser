@@ -160,4 +160,53 @@ export class DynamicPeakRate implements Rate {
     d.setDate(d.getDate() - 1); // roll back 1 day
     return new Date(d.toDateString());
   }
+
+  /**
+   * Get Good Friday date
+   * Source: https://gist.github.com/johndyer/0dffbdd98c2046f41180c051f378f343
+   * @param year
+   * @returns
+   */
+   getGoodFriday(year: number): Date {
+    // Look up table
+    const lookUp = [
+      { year: 2020, date: '04/10/2020' },
+      { year: 2021, date: '04/02/2021' },
+      { year: 2022, date: '04/15/2022' },
+      { year: 2023, date: '04/07/2023' },
+      { year: 2024, date: '03/29/2024' },
+      { year: 2025, date: '04/18/2025' },
+      { year: 2026, date: '04/03/2026' },
+      { year: 2027, date: '03/26/2027' },
+      { year: 2028, date: '04/14/2028' },
+    ];
+    const dateString = lookUp.find((item) => item.year === year)?.date;
+    if (dateString) {
+      return new Date(dateString);
+    }
+
+    // Good Friday is always the Friday before Easter Sunday
+    // Easter falls on the first Sunday after the Full Moon date
+    var f = Math.floor,
+		// Golden Number - 1
+		G = year % 19,
+		C = f(year / 100),
+		// related to Epact
+		H = (C - f(C / 4) - f((8 * C + 13)/25) + 19 * G + 15) % 30,
+		// number of days from 21 March to the Paschal full moon
+		I = H - f(H/28) * (1 - f(29/(H + 1)) * f((21-G)/11)),
+		// weekday for the Paschal full moon
+		J = (year + f(year / 4) + I + 2 - C + f(C / 4)) % 7,
+		// number of days from 21 March to the Sunday on or before the Paschal full moon
+		L = I - J,
+		month = 3 + f((L + 40)/44),
+		day = L + 28 - 31 * f(month / 4);
+
+    const d = new Date();
+    d.setFullYear(year);
+    d.setDate(day);
+    d.setMonth(month - 1);
+    d.setDate(d.getDate() - 2); // roll back from easter sunday to good friday
+    return new Date(d.toDateString());
+  }
 }

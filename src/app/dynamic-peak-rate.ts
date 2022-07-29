@@ -60,6 +60,23 @@ export class DynamicPeakRate implements Rate {
    * @returns
    */
   getMemorialDay(year: number): Date {
+    // Look up table
+    const lookUp = [
+      { year: 2020, date: '05/25/2020' },
+      { year: 2021, date: '05/31/2021' },
+      { year: 2022, date: '05/30/2022' },
+      { year: 2023, date: '05/29/2023' },
+      { year: 2024, date: '05/27/2024' },
+      { year: 2025, date: '05/26/2025' },
+      { year: 2026, date: '05/25/2026' },
+      { year: 2027, date: '05/31/2027' },
+      { year: 2028, date: '05/29/2028' },
+    ];
+    const dateString = lookUp.find((item) => item.year === year)?.date;
+    if (dateString) {
+      return new Date(dateString);
+    }
+
     // Memorial Day always last Monday of May
     const d = new Date();
     if (year) { d.setFullYear(year); }

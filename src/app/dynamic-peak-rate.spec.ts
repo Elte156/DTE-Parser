@@ -203,4 +203,29 @@ describe('DynamicPeakRate', () => {
       });
     });
   });
+
+  describe('getThanksgivingDay', () => {
+    const testCases = [
+      { year: 2017, result: new Date('11/23/2017') },
+      { year: 2018, result: new Date('11/22/2018') },
+      { year: 2019, result: new Date('11/28/2019') },
+      { year: 2020, result: new Date('11/26/2020') },
+      { year: 2021, result: new Date('11/25/2021') },
+      { year: 2022, result: new Date('11/24/2022') },
+      { year: 2023, result: new Date('11/23/2023') },
+      { year: 2024, result: new Date('11/28/2024') },
+      { year: 2025, result: new Date('11/27/2025') },
+      { year: 2026, result: new Date('11/26/2026') },
+      { year: 2027, result: new Date('11/25/2027') },
+      { year: 2028, result: new Date('11/23/2028') },
+      { year: 2029, result: new Date('11/22/2029') },
+    ];
+
+    testCases.forEach((test) => {
+      it(`should get the date for year ${test.year}`, () => {
+        const actual = sut.getThanksgivingDay(test.year);
+        expect(actual).toEqual(test.result);
+      });
+    });
+  });
 });

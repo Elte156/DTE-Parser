@@ -94,7 +94,7 @@ export class DynamicPeakRate implements Rate {
    * @returns
    */
   getLaborDay(year: number): Date {
-    // // Look up table
+    // Look up table
     const lookUp = [
       { year: 2020, date: '09/07/2020' },
       { year: 2021, date: '09/06/2021' },
@@ -119,6 +119,45 @@ export class DynamicPeakRate implements Rate {
     while (d.getDay() !== 1) {
       d.setDate(d.getDate() + 1);
     }
+    return new Date(d.toDateString());
+  }
+
+  /**
+   * Get Thanksgiving Day date
+   * @param year
+   * @returns
+   */
+  getThanksgivingDay(year: number): Date {
+    // Look up table
+    const lookUp = [
+      { year: 2020, date: '11/26/2020' },
+      { year: 2021, date: '11/25/2021' },
+      { year: 2022, date: '11/24/2022' },
+      { year: 2023, date: '11/23/2023' },
+      { year: 2024, date: '11/28/2024' },
+      { year: 2025, date: '11/27/2025' },
+      { year: 2026, date: '11/26/2026' },
+      { year: 2027, date: '11/25/2027' },
+      { year: 2028, date: '11/23/2028' },
+    ];
+    const dateString = lookUp.find((item) => item.year === year)?.date;
+    if (dateString) {
+      return new Date(dateString);
+    }
+
+    // Thanksgiving is celebrated on the fourth Thursday of November
+    const d = new Date();
+    d.setFullYear(year);
+    d.setDate(1); // Roll to the first day of ...
+    d.setMonth(10);
+    let dayEncounter = 0;
+    while (dayEncounter < 4) {
+      if (d.getDay() === 4) {
+        dayEncounter++;
+      }
+      d.setDate(d.getDate() + 1);
+    }
+    d.setDate(d.getDate() - 1); // roll back 1 day
     return new Date(d.toDateString());
   }
 }

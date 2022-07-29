@@ -153,4 +153,29 @@ describe('DynamicPeakRate', () => {
       });
     });
   });
+
+  describe('getMemorialDay', () => {
+    const testCases = [
+      { year: 2017, result: new Date('05/29/2017') },
+      { year: 2018, result: new Date('05/28/2018') },
+      { year: 2019, result: new Date('05/27/2019') },
+      { year: 2020, result: new Date('05/25/2020') },
+      { year: 2021, result: new Date('05/31/2021') },
+      { year: 2022, result: new Date('05/30/2022') },
+      { year: 2023, result: new Date('05/29/2023') },
+      { year: 2024, result: new Date('05/27/2024') },
+      { year: 2025, result: new Date('05/26/2025') },
+      { year: 2026, result: new Date('05/25/2026') },
+      { year: 2027, result: new Date('05/31/2027') },
+      { year: 2028, result: new Date('05/29/2028') },
+      { year: 2029, result: new Date('05/28/2029') },
+    ];
+
+    testCases.forEach((test) => {
+      it(`should get the date for year ${test.year}`, () => {
+        const actual = sut.getMemorialDay(test.year);
+        expect(actual).toEqual(test.result);
+      });
+    });
+  });
 });

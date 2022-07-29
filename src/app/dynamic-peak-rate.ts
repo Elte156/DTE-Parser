@@ -52,4 +52,22 @@ export class DynamicPeakRate implements Rate {
   getRateDescription(datetime: Date): string {
       throw new Error("Method not implemented.");
   }
+
+  /**
+   * Get Memorial Date date
+   * Source: https://stackoverflow.com/a/15507916/1583548
+   * @param year
+   * @returns
+   */
+  getMemorialDay(year: number): Date {
+    // Memorial Day always last Monday of May
+    const d = new Date();
+    if (year) { d.setFullYear(year); }
+    d.setDate(1); // Roll to the first day of ...
+    d.setMonth(5 || d.getMonth() + 1); // ... the next month.
+    do { // Roll the days backwards until Monday.
+      d.setDate(d.getDate() - 1);
+    } while (d.getDay() !== 1);
+    return new Date(d.toDateString());
+  }
 }

@@ -116,7 +116,7 @@ export class DynamicPeakRate implements Rate {
     const d = new Date();
     d.setFullYear(year);
     d.setDate(1); // Roll to the first day of ...
-    d.setMonth(5 || d.getMonth() + 1); // ... the next month.
+    d.setMonth(5); // ... the next month.
     do { // Roll the days backwards until Monday.
       d.setDate(d.getDate() - 1);
     } while (d.getDay() !== 1);

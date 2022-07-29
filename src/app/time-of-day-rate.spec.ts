@@ -111,7 +111,7 @@ describe('TimeOfDayRate', () => {
     });
   });
 
-  describe('getRateName', () => {
+  describe('getRateDescription', () => {
     // Off-Peak rate Monday through Friday from 7 p.m. to 11 a.m. and/or during the weekend.
     const testCases = [
       { date: new Date('01/08/2022 12:00:00 AM'), result: 'Off-Peak (7PM-11AM)' }, // Saturday

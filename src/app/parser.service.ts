@@ -42,21 +42,24 @@ export class ParserService {
     }, 0);
   }
 
-  public filterByYearAndMonth(data: DayUsage[], year: number, month: number): DayUsage[] {
+  public filterByYearAndMonth(data: DayUsage[], year: number, month: number|number[]): DayUsage[] {
+    const months = Array.isArray(month) ? month : [month];
     return data.filter((item) => {
-      return item.date.getFullYear() === year && item.date.getMonth() === month;
+      return item.date.getFullYear() === year && months.includes(item.date.getMonth());
     });
   }
 
-  public filterByDayOfWeek(data: DayUsage[], dayOfWeek: number): DayUsage[] {
+  public filterByDayOfWeek(data: DayUsage[], dayOfWeek: number|number[]): DayUsage[] {
+    const input = Array.isArray(dayOfWeek) ? dayOfWeek : [dayOfWeek];
     return data.filter((item) => {
-      return item.date.getDay() === dayOfWeek;
+      return input.includes(item.date.getDay());
     });
   }
 
-  public filterByHourOfDay(data: DayUsage[], hourOfDay: number): DayUsage[] {
+  public filterByHourOfDay(data: DayUsage[], hourOfDay: number|number[]): DayUsage[] {
+    const input = Array.isArray(hourOfDay) ? hourOfDay : [hourOfDay];
     return data.filter((item) => {
-      return item.date.getHours() === hourOfDay;
+      return input.includes(item.date.getHours());
     });
   }
 }

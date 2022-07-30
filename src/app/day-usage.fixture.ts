@@ -1,6 +1,7 @@
 import { DayUsage } from "./day-usage";
 
 const mockData: DayUsage[] = [
+  // Friday
   {date: new Date('2022-07-01T00:00:00'), energyHour: 1.110},
   {date: new Date('2022-07-01T01:00:00'), energyHour: 1.220},
   {date: new Date('2022-07-01T02:00:00'), energyHour: 1.330},
@@ -26,6 +27,7 @@ const mockData: DayUsage[] = [
   {date: new Date('2022-07-01T22:00:00'), energyHour: 1.550},
   {date: new Date('2022-07-01T23:00:00'), energyHour: 2.660},
 
+  // Saturday
   {date: new Date('2022-07-02T00:00:00'), energyHour: 1.110},
   {date: new Date('2022-07-02T01:00:00'), energyHour: 1.220},
   {date: new Date('2022-07-02T02:00:00'), energyHour: 1.330},
@@ -51,6 +53,7 @@ const mockData: DayUsage[] = [
   {date: new Date('2022-07-02T22:00:00'), energyHour: 1.550},
   {date: new Date('2022-07-02T23:00:00'), energyHour: 2.660},
 
+  // Sunday
   {date: new Date('2022-07-03T00:00:00'), energyHour: 1.110},
   {date: new Date('2022-07-03T01:00:00'), energyHour: 1.220},
   {date: new Date('2022-07-03T02:00:00'), energyHour: 1.330},
@@ -76,6 +79,7 @@ const mockData: DayUsage[] = [
   {date: new Date('2022-07-03T22:00:00'), energyHour: 1.550},
   {date: new Date('2022-07-03T23:00:00'), energyHour: 2.660},
 
+  // Monday
   {date: new Date('2022-07-04T00:00:00'), energyHour: 1.110},
   {date: new Date('2022-07-04T01:00:00'), energyHour: 1.220},
   {date: new Date('2022-07-04T02:00:00'), energyHour: 1.330},
@@ -101,6 +105,7 @@ const mockData: DayUsage[] = [
   {date: new Date('2022-07-04T22:00:00'), energyHour: 1.550},
   {date: new Date('2022-07-04T23:00:00'), energyHour: 2.660},
 
+  // Tuesday
   {date: new Date('2022-07-05T00:00:00'), energyHour: 1.110},
   {date: new Date('2022-07-05T01:00:00'), energyHour: 1.220},
   {date: new Date('2022-07-05T02:00:00'), energyHour: 1.330},
@@ -126,6 +131,7 @@ const mockData: DayUsage[] = [
   {date: new Date('2022-07-05T22:00:00'), energyHour: 1.550},
   {date: new Date('2022-07-05T23:00:00'), energyHour: 2.660},
 
+  // Wednesday
   {date: new Date('2022-07-06T00:00:00'), energyHour: 1.110},
   {date: new Date('2022-07-06T01:00:00'), energyHour: 1.220},
   {date: new Date('2022-07-06T02:00:00'), energyHour: 1.330},
@@ -151,6 +157,7 @@ const mockData: DayUsage[] = [
   {date: new Date('2022-07-06T22:00:00'), energyHour: 1.550},
   {date: new Date('2022-07-06T23:00:00'), energyHour: 2.660},
 
+  // Thursday
   {date: new Date('2022-07-07T00:00:00'), energyHour: 1.110},
   {date: new Date('2022-07-07T01:00:00'), energyHour: 1.220},
   {date: new Date('2022-07-07T02:00:00'), energyHour: 1.330},
@@ -176,6 +183,7 @@ const mockData: DayUsage[] = [
   {date: new Date('2022-07-07T22:00:00'), energyHour: 1.550},
   {date: new Date('2022-07-07T23:00:00'), energyHour: 2.660},
 
+  // Friday
   {date: new Date('2022-07-08T00:00:00'), energyHour: 1.110},
   {date: new Date('2022-07-08T01:00:00'), energyHour: 1.220},
   {date: new Date('2022-07-08T02:00:00'), energyHour: 1.330},
@@ -201,31 +209,7 @@ const mockData: DayUsage[] = [
   {date: new Date('2022-07-08T22:00:00'), energyHour: 1.550},
   {date: new Date('2022-07-08T23:00:00'), energyHour: 2.660},
 
-  {date: new Date('2023-07-01T00:00:00'), energyHour: 1.110},
-  {date: new Date('2023-07-01T01:00:00'), energyHour: 1.220},
-  {date: new Date('2023-07-01T02:00:00'), energyHour: 1.330},
-  {date: new Date('2023-07-01T03:00:00'), energyHour: 1.440},
-  {date: new Date('2023-07-01T04:00:00'), energyHour: 1.550},
-  {date: new Date('2023-07-01T05:00:00'), energyHour: 1.660},
-  {date: new Date('2023-07-01T06:00:00'), energyHour: 1.770},
-  {date: new Date('2023-07-01T07:00:00'), energyHour: 1.880},
-  {date: new Date('2023-07-01T08:00:00'), energyHour: 1.990},
-  {date: new Date('2023-07-01T09:00:00'), energyHour: 1.110},
-  {date: new Date('2023-07-01T10:00:00'), energyHour: 1.220},
-  {date: new Date('2023-07-01T11:00:00'), energyHour: 1.330},
-  {date: new Date('2023-07-01T12:00:00'), energyHour: 1.440},
-  {date: new Date('2023-07-01T13:00:00'), energyHour: 1.550},
-  {date: new Date('2023-07-01T14:00:00'), energyHour: 0.660},
-  {date: new Date('2023-07-01T15:00:00'), energyHour: 1.770},
-  {date: new Date('2023-07-01T16:00:00'), energyHour: 1.880},
-  {date: new Date('2023-07-01T17:00:00'), energyHour: 2.990},
-  {date: new Date('2023-07-01T18:00:00'), energyHour: 1.110},
-  {date: new Date('2023-07-01T19:00:00'), energyHour: 1.220},
-  {date: new Date('2023-07-01T20:00:00'), energyHour: 1.330},
-  {date: new Date('2023-07-01T21:00:00'), energyHour: 1.440},
-  {date: new Date('2023-07-01T22:00:00'), energyHour: 1.550},
-  {date: new Date('2023-07-01T23:00:00'), energyHour: 2.660},
-
+  // Monday - August
   {date: new Date('2022-08-01T00:00:00'), energyHour: 1.110},
   {date: new Date('2022-08-01T01:00:00'), energyHour: 1.220},
   {date: new Date('2022-08-01T02:00:00'), energyHour: 1.330},
@@ -250,6 +234,46 @@ const mockData: DayUsage[] = [
   {date: new Date('2022-08-01T21:00:00'), energyHour: 1.440},
   {date: new Date('2022-08-01T22:00:00'), energyHour: 1.550},
   {date: new Date('2022-08-01T23:00:00'), energyHour: 2.660},
+
+  // Tuesday - August - Only half of the day available
+  {date: new Date('2022-08-02T00:00:00'), energyHour: 1.110},
+  {date: new Date('2022-08-02T01:00:00'), energyHour: 1.220},
+  {date: new Date('2022-08-02T02:00:00'), energyHour: 1.330},
+  {date: new Date('2022-08-02T03:00:00'), energyHour: 1.440},
+  {date: new Date('2022-08-02T04:00:00'), energyHour: 1.550},
+  {date: new Date('2022-08-02T05:00:00'), energyHour: 1.660},
+  {date: new Date('2022-08-02T06:00:00'), energyHour: 1.770},
+  {date: new Date('2022-08-02T07:00:00'), energyHour: 1.880},
+  {date: new Date('2022-08-02T08:00:00'), energyHour: 1.990},
+  {date: new Date('2022-08-02T09:00:00'), energyHour: 1.110},
+  {date: new Date('2022-08-02T10:00:00'), energyHour: 1.220},
+  {date: new Date('2022-08-02T11:00:00'), energyHour: 1.330},
+
+  // Saturday 2023
+  {date: new Date('2023-07-01T00:00:00'), energyHour: 1.110},
+  {date: new Date('2023-07-01T01:00:00'), energyHour: 1.220},
+  {date: new Date('2023-07-01T02:00:00'), energyHour: 1.330},
+  {date: new Date('2023-07-01T03:00:00'), energyHour: 1.440},
+  {date: new Date('2023-07-01T04:00:00'), energyHour: 1.550},
+  {date: new Date('2023-07-01T05:00:00'), energyHour: 1.660},
+  {date: new Date('2023-07-01T06:00:00'), energyHour: 1.770},
+  {date: new Date('2023-07-01T07:00:00'), energyHour: 1.880},
+  {date: new Date('2023-07-01T08:00:00'), energyHour: 1.990},
+  {date: new Date('2023-07-01T09:00:00'), energyHour: 1.110},
+  {date: new Date('2023-07-01T10:00:00'), energyHour: 1.220},
+  {date: new Date('2023-07-01T11:00:00'), energyHour: 1.330},
+  {date: new Date('2023-07-01T12:00:00'), energyHour: 1.440},
+  {date: new Date('2023-07-01T13:00:00'), energyHour: 1.550},
+  {date: new Date('2023-07-01T14:00:00'), energyHour: 0.660},
+  {date: new Date('2023-07-01T15:00:00'), energyHour: 1.770},
+  {date: new Date('2023-07-01T16:00:00'), energyHour: 1.880},
+  {date: new Date('2023-07-01T17:00:00'), energyHour: 2.990},
+  {date: new Date('2023-07-01T18:00:00'), energyHour: 1.110},
+  {date: new Date('2023-07-01T19:00:00'), energyHour: 1.220},
+  {date: new Date('2023-07-01T20:00:00'), energyHour: 1.330},
+  {date: new Date('2023-07-01T21:00:00'), energyHour: 1.440},
+  {date: new Date('2023-07-01T22:00:00'), energyHour: 1.550},
+  {date: new Date('2023-07-01T23:00:00'), energyHour: 2.660},
 ];
 
 export default mockData;

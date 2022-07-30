@@ -17,35 +17,65 @@ describe('ParserService', () => {
   });
 
   it('should sum up the energy usage for a given array', () => {
-    const expected = 372.1000000000008;
+    const expected = 389.7100000000009;
 
     const actual = service.sum(mockData);
 
     expect(actual).toEqual(expected);
   });
 
-  it('should get all items for a specific year and month from a given array', () => {
-    const expected = 24 * 8; // 24 entries per day * 8 days
+  describe('filterByDayOfWeek', () => {
+    it('should get single specific [year] and [month] from a given array', () => {
+      const expected = 192; // 24 entries per day * 8 days
 
-    const actual = service.filterByYearAndMonth(mockData, 2022, 6);
+      const actual = service.filterByYearAndMonth(mockData, 2022, 6);
 
-    expect(actual.length).toEqual(expected);
+      expect(actual.length).toEqual(expected);
+    });
+
+    it('should get single specific [year] and [multiple months] from a given array', () => {
+      const expected = 228; // (24 entries per day * 8 days) + 24 august + 12 august
+
+      const actual = service.filterByYearAndMonth(mockData, 2022, [6,7]);
+
+      expect(actual.length).toEqual(expected);
+    });
   });
 
-  it('should get all items for a specific day of the week from a given array', () => {
-    const expected = 48;
+  describe('filterByDayOfWeek', () => {
+    it('should get single specific day of the week from a given array', () => {
+      const expected = 48; // 48 items for Monday
 
-    const actual = service.filterByDayOfWeek(mockData, 1);
+      const actual = service.filterByDayOfWeek(mockData, 1);
 
-    expect(actual.length).toEqual(expected);
+      expect(actual.length).toEqual(expected);
+    });
+
+    it('should get multiple specific day of the week from a given array', () => {
+      const expected = 72; // 48 items for Monday, 24 items for Sunday
+
+      const actual = service.filterByDayOfWeek(mockData, [1, 0]);
+
+      expect(actual.length).toEqual(expected);
+    });
   });
 
-  it('should get all specific hour items from a given array', () => {
-    const expected = 10; // 10 days in mock
+  describe('filterByHourOfDay', () => {
+    it('should get single specific hour items from a given array', () => {
+      const expected = 10; // 10 days in mock with 3pm
 
-    const actual = service.filterByHourOfDay(mockData, 12);
+      const actual = service.filterByHourOfDay(mockData, 15);
 
-    expect(actual.length).toEqual(expected);
+      expect(actual.length).toEqual(expected);
+    });
+
+    it('should get multiple specific hour items from a given array', () => {
+      const expected = 21; // 10 days in mock with 3pm + 11 days with 1am
+
+      const actual = service.filterByHourOfDay(mockData, [15,1]);
+
+      expect(actual.length).toEqual(expected);
+    });
   });
 
   it('should get the sum of a specific hour for specific days in a specific month', () => {

@@ -8,6 +8,34 @@ export class ParserService {
 
   constructor() { }
 
+  public listYears(data: DayUsage[]): number[] {
+    const found = data.map((item) => {
+      return item.date.getFullYear();
+    });
+    return [...new Set(found)];
+  }
+
+  public listMonths(data: DayUsage[]): number[] {
+    const found = data.map((item) => {
+      return item.date.getMonth();
+    });
+    return [...new Set(found)];
+  }
+
+  public listDays(data: DayUsage[]): number[] {
+    const found = data.map((item) => {
+      return item.date.getDay();
+    });
+    return [...new Set(found)];
+  }
+
+  public listHours(data: DayUsage[]): number[] {
+    const found = data.map((item) => {
+      return item.date.getHours();
+    });
+    return [...new Set(found)];
+  }
+
   public sum(data: DayUsage[]): number {
     return data.reduce((accumulator, item) => {
       return accumulator + item.energyHour;

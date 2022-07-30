@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { DayUsage } from './day-usage';
 import mockData from './day-usage.fixture';
 
 import { ParserService } from './parser.service';
@@ -54,6 +55,58 @@ describe('ParserService', () => {
     data = service.filterByDayOfWeek(data, 5);
     data = service.filterByHourOfDay(data, 12);
     const actual = service.sum(data);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('should list available months in given array', () => {
+    const input: DayUsage[] = [
+      {date: new Date('2021-01-01T00:00:00'), energyHour: 1.110},
+      {date: new Date('2022-05-01T00:00:00'), energyHour: 1.220},
+      {date: new Date('2023-12-01T00:00:00'), energyHour: 1.220},
+    ];
+    const expected = [2021, 2022, 2023];
+
+    const actual = service.listYears(input);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('should list available months in given array', () => {
+    const input: DayUsage[] = [
+      {date: new Date('2021-01-01T00:00:00'), energyHour: 1.110},
+      {date: new Date('2022-05-01T00:00:00'), energyHour: 1.220},
+      {date: new Date('2023-12-01T00:00:00'), energyHour: 1.220},
+    ];
+    const expected = [0, 4, 11];
+
+    const actual = service.listMonths(input);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('should list available days in given array', () => {
+    const input: DayUsage[] = [
+      {date: new Date('2022-01-01T00:00:00'), energyHour: 1.110},
+      {date: new Date('2022-01-02T00:00:00'), energyHour: 1.220},
+      {date: new Date('2022-01-03T00:00:00'), energyHour: 1.220},
+    ];
+    const expected = [6, 0, 1];
+
+    const actual = service.listDays(input);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('should list available hours in given array', () => {
+    const input: DayUsage[] = [
+      {date: new Date('2022-01-01T00:00:00'), energyHour: 1.110},
+      {date: new Date('2022-01-02T11:00:00'), energyHour: 1.220},
+      {date: new Date('2022-01-03T21:00:00'), energyHour: 1.220},
+    ];
+    const expected = [0, 11, 21];
+
+    const actual = service.listHours(input);
 
     expect(actual).toEqual(expected);
   });

@@ -298,27 +298,89 @@ describe('DynamicPeakRate', () => {
 
   describe('getRateDescription', () => {
     const testCases = [
-      { date: new Date('01/08/2022 12:00:00 AM'), result: 'Off-Peak (11PM-7AM)' }, // Saturday
-      { date: new Date('01/08/2022 06:59:59 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/08/2022 07:00:00 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/08/2022 02:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/08/2022 03:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/08/2022 06:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/08/2022 07:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/08/2022 10:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/08/2022 11:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/08/2022 11:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
+      // Saturday
+      {
+        date: new Date('01/08/2022 12:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/08/2022 06:59:59 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/08/2022 07:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/08/2022 02:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/08/2022 03:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/08/2022 06:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/08/2022 07:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/08/2022 10:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/08/2022 11:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/08/2022 11:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
 
-      { date: new Date('01/09/2022 12:00:00 AM'), result: 'Off-Peak (11PM-7AM)' }, // Sunday
-      { date: new Date('01/09/2022 06:59:59 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/09/2022 07:00:00 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/09/2022 02:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/09/2022 03:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/09/2022 06:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/09/2022 07:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/09/2022 10:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/09/2022 11:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/09/2022 11:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
+      // Sunday
+      {
+        date: new Date('01/09/2022 12:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/09/2022 06:59:59 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/09/2022 07:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/09/2022 02:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/09/2022 03:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/09/2022 06:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/09/2022 07:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/09/2022 10:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/09/2022 11:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/09/2022 11:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
 
       // *Designated holidays:
       // New Year's Day
@@ -329,105 +391,384 @@ describe('DynamicPeakRate', () => {
       // Thanksgiving Day
       // Christmas Day
 
-      { date: new Date('01/01/2021 12:00:00 AM'), result: 'Off-Peak (11PM-7AM)' }, // New Year's Day
-      { date: new Date('01/01/2021 06:59:59 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/01/2021 07:00:00 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/01/2021 02:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/01/2021 03:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/01/2021 06:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/01/2021 07:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/01/2021 10:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/01/2021 11:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/01/2021 11:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
+      // New Year's Day
+      {
+        date: new Date('01/01/2021 12:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/01/2021 06:59:59 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/01/2021 07:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/01/2021 02:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/01/2021 03:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/01/2021 06:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/01/2021 07:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/01/2021 10:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/01/2021 11:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/01/2021 11:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
 
       // Easter falls on the first Sunday after the Full Moon date
-      { date: new Date('04/15/2022 12:00:00 AM'), result: 'Off-Peak (11PM-7AM)' }, // Good Friday is always the Friday before Easter Sunday
-      { date: new Date('04/15/2022 06:59:59 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('04/15/2022 07:00:00 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('04/15/2022 02:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('04/15/2022 03:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('04/15/2022 06:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('04/15/2022 07:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('04/15/2022 10:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('04/15/2022 11:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('04/15/2022 11:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
+      // Good Friday is always the Friday before Easter Sunday
+      {
+        date: new Date('04/15/2022 12:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('04/15/2022 06:59:59 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('04/15/2022 07:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('04/15/2022 02:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('04/15/2022 03:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('04/15/2022 06:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('04/15/2022 07:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('04/15/2022 10:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('04/15/2022 11:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('04/15/2022 11:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
 
-      { date: new Date('05/30/2022 12:00:00 AM'), result: 'Off-Peak (11PM-7AM)' }, // Memorial Day always last Monday of May
-      { date: new Date('05/30/2022 06:59:59 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('05/30/2022 07:00:00 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('05/30/2022 02:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('05/30/2022 03:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('05/30/2022 06:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('05/30/2022 07:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('05/30/2022 10:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('05/30/2022 11:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('05/30/2022 11:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
+      // Memorial Day always last Monday of May
+      {
+        date: new Date('05/30/2022 12:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('05/30/2022 06:59:59 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('05/30/2022 07:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('05/30/2022 02:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('05/30/2022 03:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('05/30/2022 06:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('05/30/2022 07:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('05/30/2022 10:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('05/30/2022 11:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('05/30/2022 11:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
 
-      { date: new Date('07/04/2022 12:00:00 AM'), result: 'Off-Peak (11PM-7AM)' }, // Independence Day always falls on 4 July
-      { date: new Date('07/04/2022 06:59:59 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('07/04/2022 07:00:00 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('07/04/2022 02:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('07/04/2022 03:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('07/04/2022 06:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('07/04/2022 07:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('07/04/2022 10:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('07/04/2022 11:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('07/04/2022 11:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
+      // Independence Day always falls on 4 July
+      {
+        date: new Date('07/04/2022 12:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('07/04/2022 06:59:59 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('07/04/2022 07:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('07/04/2022 02:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('07/04/2022 03:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('07/04/2022 06:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('07/04/2022 07:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('07/04/2022 10:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('07/04/2022 11:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('07/04/2022 11:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
 
-      { date: new Date('09/05/2022 12:00:00 AM'), result: 'Off-Peak (11PM-7AM)' }, // Labor Day always falls on the first Monday in September
-      { date: new Date('09/05/2022 06:59:59 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('09/05/2022 07:00:00 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('09/05/2022 02:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('09/05/2022 03:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('09/05/2022 06:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('09/05/2022 07:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('09/05/2022 10:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('09/05/2022 11:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('09/05/2022 11:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
+      // Labor Day always falls on the first Monday in September
+      {
+        date: new Date('09/05/2022 12:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('09/05/2022 06:59:59 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('09/05/2022 07:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('09/05/2022 02:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('09/05/2022 03:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('09/05/2022 06:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('09/05/2022 07:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('09/05/2022 10:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('09/05/2022 11:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('09/05/2022 11:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
 
-      { date: new Date('11/24/2022 12:00:00 AM'), result: 'Off-Peak (11PM-7AM)' }, // Thanksgiving is celebrated on the fourth Thursday of November
-      { date: new Date('11/24/2022 06:59:59 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('11/24/2022 07:00:00 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('11/24/2022 02:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('11/24/2022 03:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('11/24/2022 06:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('11/24/2022 07:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('11/24/2022 10:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('11/24/2022 11:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('11/24/2022 11:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
+      // Thanksgiving is celebrated on the fourth Thursday of November
+      {
+        date: new Date('11/24/2022 12:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('11/24/2022 06:59:59 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('11/24/2022 07:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('11/24/2022 02:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('11/24/2022 03:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('11/24/2022 06:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('11/24/2022 07:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('11/24/2022 10:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('11/24/2022 11:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('11/24/2022 11:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
 
-      { date: new Date('12/25/2023 12:00:00 AM'), result: 'Off-Peak (11PM-7AM)' }, // Christmas Day
-      { date: new Date('12/25/2023 06:59:59 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('12/25/2023 07:00:00 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('12/25/2023 02:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('12/25/2023 03:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('12/25/2023 06:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('12/25/2023 07:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('12/25/2023 10:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('12/25/2023 11:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('12/25/2023 11:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
+      // Christmas Day
+      {
+        date: new Date('12/25/2023 12:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('12/25/2023 06:59:59 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('12/25/2023 07:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('12/25/2023 02:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('12/25/2023 03:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('12/25/2023 06:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('12/25/2023 07:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('12/25/2023 10:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('12/25/2023 11:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('12/25/2023 11:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
 
-      { date: new Date('01/03/2022 12:00:00 AM'), result: 'Off-Peak (11PM-7AM)' }, // Monday
-      { date: new Date('01/03/2022 06:59:59 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/03/2022 07:00:00 AM'), result: 'Mid-Peak (7AM-3PM)' },
-      { date: new Date('01/03/2022 02:59:59 PM'), result: 'Mid-Peak (7AM-3PM)' },
-      { date: new Date('01/03/2022 03:00:00 PM'), result: 'On-Peak (3PM-7PM)' },
-      { date: new Date('01/03/2022 06:59:59 PM'), result: 'On-Peak (3PM-7PM)' },
-      { date: new Date('01/03/2022 07:00:00 PM'), result: 'Mid-Peak (7PM-11PM)' },
-      { date: new Date('01/03/2022 10:59:59 PM'), result: 'Mid-Peak (7PM-11PM)' },
-      { date: new Date('01/03/2022 11:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/03/2022 11:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
+      // Monday
+      {
+        date: new Date('01/03/2022 12:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/03/2022 06:59:59 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/03/2022 07:00:00 AM'),
+        result: 'Mid-Peak (7AM-3PM)',
+      },
+      {
+        date: new Date('01/03/2022 02:59:59 PM'),
+        result: 'Mid-Peak (7AM-3PM)',
+      },
+      {
+        date: new Date('01/03/2022 03:00:00 PM'),
+        result: 'On-Peak (3PM-7PM)',
+      },
+      {
+        date: new Date('01/03/2022 06:59:59 PM'),
+        result: 'On-Peak (3PM-7PM)',
+      },
+      {
+        date: new Date('01/03/2022 07:00:00 PM'),
+        result: 'Mid-Peak (7PM-11PM)',
+      },
+      {
+        date: new Date('01/03/2022 10:59:59 PM'),
+        result: 'Mid-Peak (7PM-11PM)',
+      },
+      {
+        date: new Date('01/03/2022 11:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/03/2022 11:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
 
-      { date: new Date('01/07/2022 12:00:00 AM'), result: 'Off-Peak (11PM-7AM)' }, // Friday
-      { date: new Date('01/07/2022 06:59:59 AM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/07/2022 07:00:00 AM'), result: 'Mid-Peak (7AM-3PM)' },
-      { date: new Date('01/07/2022 02:59:59 PM'), result: 'Mid-Peak (7AM-3PM)' },
-      { date: new Date('01/07/2022 03:00:00 PM'), result: 'On-Peak (3PM-7PM)' },
-      { date: new Date('01/07/2022 06:59:59 PM'), result: 'On-Peak (3PM-7PM)' },
-      { date: new Date('01/07/2022 07:00:00 PM'), result: 'Mid-Peak (7PM-11PM)' },
-      { date: new Date('01/07/2022 10:59:59 PM'), result: 'Mid-Peak (7PM-11PM)' },
-      { date: new Date('01/07/2022 11:00:00 PM'), result: 'Off-Peak (11PM-7AM)' },
-      { date: new Date('01/07/2022 11:59:59 PM'), result: 'Off-Peak (11PM-7AM)' },
+      // Friday
+      {
+        date: new Date('01/07/2022 12:00:00 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/07/2022 06:59:59 AM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/07/2022 07:00:00 AM'),
+        result: 'Mid-Peak (7AM-3PM)',
+      },
+      {
+        date: new Date('01/07/2022 02:59:59 PM'),
+        result: 'Mid-Peak (7AM-3PM)',
+      },
+      {
+        date: new Date('01/07/2022 03:00:00 PM'),
+        result: 'On-Peak (3PM-7PM)',
+      },
+      {
+        date: new Date('01/07/2022 06:59:59 PM'),
+        result: 'On-Peak (3PM-7PM)',
+      },
+      {
+        date: new Date('01/07/2022 07:00:00 PM'),
+        result: 'Mid-Peak (7PM-11PM)',
+      },
+      {
+        date: new Date('01/07/2022 10:59:59 PM'),
+        result: 'Mid-Peak (7PM-11PM)',
+      },
+      {
+        date: new Date('01/07/2022 11:00:00 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
+      {
+        date: new Date('01/07/2022 11:59:59 PM'),
+        result: 'Off-Peak (11PM-7AM)',
+      },
     ];
 
     testCases.forEach((test) => {

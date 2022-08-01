@@ -70,15 +70,15 @@ describe('TimeOfDayRate', () => {
 
       { date: new Date('01/03/2022 12:00:00 AM'), result: 0.12 }, // Monday
       { date: new Date('01/03/2022 10:59:59 AM'), result: 0.12 },
-      { date: new Date('01/03/2022 11:00:00 AM'), result: 0.20 },
-      { date: new Date('01/03/2022 06:59:59 PM'), result: 0.20 },
+      { date: new Date('01/03/2022 11:00:00 AM'), result: 0.2 },
+      { date: new Date('01/03/2022 06:59:59 PM'), result: 0.2 },
       { date: new Date('01/03/2022 07:00:00 PM'), result: 0.12 },
       { date: new Date('01/03/2022 11:59:59 PM'), result: 0.12 },
 
       { date: new Date('01/07/2022 12:00:00 AM'), result: 0.12 }, // Friday
       { date: new Date('01/07/2022 10:59:59 AM'), result: 0.12 },
-      { date: new Date('01/07/2022 11:00:00 AM'), result: 0.20 },
-      { date: new Date('01/07/2022 06:59:59 PM'), result: 0.20 },
+      { date: new Date('01/07/2022 11:00:00 AM'), result: 0.2 },
+      { date: new Date('01/07/2022 06:59:59 PM'), result: 0.2 },
       { date: new Date('01/07/2022 07:00:00 PM'), result: 0.12 },
       { date: new Date('01/07/2022 11:59:59 PM'), result: 0.12 },
 
@@ -92,13 +92,13 @@ describe('TimeOfDayRate', () => {
       { date: new Date('10/01/2022 11:00:00 AM'), result: 0.12 }, // Saturday
       { date: new Date('10/01/2022 06:59:59 PM'), result: 0.12 },
 
-      { date: new Date('11/07/2022 11:00:00 AM'), result: 0.20 }, // Monday - November
-      { date: new Date('11/07/2022 06:59:59 PM'), result: 0.20 },
+      { date: new Date('11/07/2022 11:00:00 AM'), result: 0.2 }, // Monday - November
+      { date: new Date('11/07/2022 06:59:59 PM'), result: 0.2 },
       { date: new Date('11/05/2022 11:00:00 AM'), result: 0.12 }, // Saturday
       { date: new Date('11/05/2022 06:59:59 PM'), result: 0.12 },
 
-      { date: new Date('05/02/2022 11:00:00 AM'), result: 0.20 }, // Monday - May
-      { date: new Date('05/02/2022 06:59:59 PM'), result: 0.20 },
+      { date: new Date('05/02/2022 11:00:00 AM'), result: 0.2 }, // Monday - May
+      { date: new Date('05/02/2022 06:59:59 PM'), result: 0.2 },
       { date: new Date('05/07/2022 11:00:00 AM'), result: 0.12 }, // Saturday
       { date: new Date('05/07/2022 06:59:59 PM'), result: 0.12 },
     ];
@@ -114,33 +114,109 @@ describe('TimeOfDayRate', () => {
   describe('getRateDescription', () => {
     // Off-Peak rate Monday through Friday from 7 p.m. to 11 a.m. and/or during the weekend.
     const testCases = [
-      { date: new Date('01/08/2022 12:00:00 AM'), result: 'Off-Peak (7PM-11AM)' }, // Saturday
-      { date: new Date('01/08/2022 10:59:59 AM'), result: 'Off-Peak (7PM-11AM)' },
-      { date: new Date('01/08/2022 11:00:00 AM'), result: 'Off-Peak (7PM-11AM)' },
-      { date: new Date('01/08/2022 06:59:59 PM'), result: 'Off-Peak (7PM-11AM)' },
-      { date: new Date('01/08/2022 07:00:00 PM'), result: 'Off-Peak (7PM-11AM)' },
-      { date: new Date('01/08/2022 11:59:59 PM'), result: 'Off-Peak (7PM-11AM)' },
+      // Saturday
+      {
+        date: new Date('01/08/2022 12:00:00 AM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/08/2022 10:59:59 AM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/08/2022 11:00:00 AM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/08/2022 06:59:59 PM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/08/2022 07:00:00 PM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/08/2022 11:59:59 PM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
 
-      { date: new Date('01/09/2022 12:00:00 AM'), result: 'Off-Peak (7PM-11AM)' }, // Sunday
-      { date: new Date('01/09/2022 10:59:59 AM'), result: 'Off-Peak (7PM-11AM)' },
-      { date: new Date('01/09/2022 11:00:00 AM'), result: 'Off-Peak (7PM-11AM)' },
-      { date: new Date('01/09/2022 06:59:59 PM'), result: 'Off-Peak (7PM-11AM)' },
-      { date: new Date('01/09/2022 07:00:00 PM'), result: 'Off-Peak (7PM-11AM)' },
-      { date: new Date('01/09/2022 11:59:59 PM'), result: 'Off-Peak (7PM-11AM)' },
+      // Sunday
+      {
+        date: new Date('01/09/2022 12:00:00 AM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/09/2022 10:59:59 AM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/09/2022 11:00:00 AM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/09/2022 06:59:59 PM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/09/2022 07:00:00 PM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/09/2022 11:59:59 PM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
 
-      { date: new Date('01/03/2022 12:00:00 AM'), result: 'Off-Peak (7PM-11AM)' }, // Monday
-      { date: new Date('01/03/2022 10:59:59 AM'), result: 'Off-Peak (7PM-11AM)' },
-      { date: new Date('01/03/2022 11:00:00 AM'), result: 'On-Peak (11AM-7PM)' },
-      { date: new Date('01/03/2022 06:59:59 PM'), result: 'On-Peak (11AM-7PM)' },
-      { date: new Date('01/03/2022 07:00:00 PM'), result: 'Off-Peak (7PM-11AM)' },
-      { date: new Date('01/03/2022 11:59:59 PM'), result: 'Off-Peak (7PM-11AM)' },
+      // Monday
+      {
+        date: new Date('01/03/2022 12:00:00 AM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/03/2022 10:59:59 AM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/03/2022 11:00:00 AM'),
+        result: 'On-Peak (11AM-7PM)',
+      },
+      {
+        date: new Date('01/03/2022 06:59:59 PM'),
+        result: 'On-Peak (11AM-7PM)',
+      },
+      {
+        date: new Date('01/03/2022 07:00:00 PM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/03/2022 11:59:59 PM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
 
-      { date: new Date('01/07/2022 12:00:00 AM'), result: 'Off-Peak (7PM-11AM)' }, // Friday
-      { date: new Date('01/07/2022 10:59:59 AM'), result: 'Off-Peak (7PM-11AM)' },
-      { date: new Date('01/07/2022 11:00:00 AM'), result: 'On-Peak (11AM-7PM)' },
-      { date: new Date('01/07/2022 06:59:59 PM'), result: 'On-Peak (11AM-7PM)' },
-      { date: new Date('01/07/2022 07:00:00 PM'), result: 'Off-Peak (7PM-11AM)' },
-      { date: new Date('01/07/2022 11:59:59 PM'), result: 'Off-Peak (7PM-11AM)' },
+      // Friday
+      {
+        date: new Date('01/07/2022 12:00:00 AM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/07/2022 10:59:59 AM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/07/2022 11:00:00 AM'),
+        result: 'On-Peak (11AM-7PM)',
+      },
+      {
+        date: new Date('01/07/2022 06:59:59 PM'),
+        result: 'On-Peak (11AM-7PM)',
+      },
+      {
+        date: new Date('01/07/2022 07:00:00 PM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
+      {
+        date: new Date('01/07/2022 11:59:59 PM'),
+        result: 'Off-Peak (7PM-11AM)',
+      },
     ];
 
     testCases.forEach((test) => {

@@ -1,17 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-rate-section',
   templateUrl: './rate-section.component.html',
   styleUrls: ['./rate-section.component.scss']
 })
-export class RateSectionComponent implements OnInit {
+export class RateSectionComponent {
   results: {title: string, costMonthly: number, costYearly: number}[] = []
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   loadMockData(): void {
     this.results = [

@@ -1,4 +1,4 @@
-import { Rate } from "./rate";
+import { Rate } from './rate';
 
 export class DynamicPeakRate implements Rate {
   public static readonly RATE_OFF_PEAK = 0.11;
@@ -10,8 +10,8 @@ export class DynamicPeakRate implements Rate {
     switch (rate) {
       case DynamicPeakRate.RATE_ON_PEAK:
         return 'On-Peak';
-        case DynamicPeakRate.RATE_MID_PEAK:
-          return 'Mid-Peak';
+      case DynamicPeakRate.RATE_MID_PEAK:
+        return 'Mid-Peak';
       default:
         return 'Off-Peak';
     }
@@ -31,11 +31,17 @@ export class DynamicPeakRate implements Rate {
       return DynamicPeakRate.RATE_OFF_PEAK;
     }
     // Good Friday
-    if (this.getGoodFriday(datetime.getFullYear()).getTime() === dateWithoutTime.getTime() ) {
+    if (
+      this.getGoodFriday(datetime.getFullYear()).getTime() ===
+      dateWithoutTime.getTime()
+    ) {
       return DynamicPeakRate.RATE_OFF_PEAK;
     }
     // Memorial Day
-    if (this.getMemorialDay(datetime.getFullYear()).getTime() === dateWithoutTime.getTime() ) {
+    if (
+      this.getMemorialDay(datetime.getFullYear()).getTime() ===
+      dateWithoutTime.getTime()
+    ) {
       return DynamicPeakRate.RATE_OFF_PEAK;
     }
     // Independence Day
@@ -43,11 +49,17 @@ export class DynamicPeakRate implements Rate {
       return DynamicPeakRate.RATE_OFF_PEAK;
     }
     // Labor Day
-    if (this.getLaborDay(datetime.getFullYear()).getTime() === dateWithoutTime.getTime() ) {
+    if (
+      this.getLaborDay(datetime.getFullYear()).getTime() ===
+      dateWithoutTime.getTime()
+    ) {
       return DynamicPeakRate.RATE_OFF_PEAK;
     }
     // Thanksgiving Day
-    if (this.getThanksgivingDay(datetime.getFullYear()).getTime() === dateWithoutTime.getTime() ) {
+    if (
+      this.getThanksgivingDay(datetime.getFullYear()).getTime() ===
+      dateWithoutTime.getTime()
+    ) {
       return DynamicPeakRate.RATE_OFF_PEAK;
     }
     // Christmas Day
@@ -79,8 +91,7 @@ export class DynamicPeakRate implements Rate {
       case DynamicPeakRate.RATE_MID_PEAK:
         if (datetime.getHours() >= 7 && datetime.getHours() < 15) {
           return 'Mid-Peak (7AM-3PM)';
-        }
-        else {
+        } else {
           return 'Mid-Peak (7PM-11PM)';
         }
       default:
@@ -117,7 +128,8 @@ export class DynamicPeakRate implements Rate {
     d.setFullYear(year);
     d.setDate(1); // Roll to the first day of ...
     d.setMonth(5); // ... the next month.
-    do { // Roll the days backwards until Monday.
+    do {
+      // Roll the days backwards until Monday.
       d.setDate(d.getDate() - 1);
     } while (d.getDay() !== 1);
     return new Date(d.toDateString());
@@ -202,7 +214,7 @@ export class DynamicPeakRate implements Rate {
    * @param year
    * @returns
    */
-   getGoodFriday(year: number): Date {
+  getGoodFriday(year: number): Date {
     // Look up table
     const lookUp = [
       { year: 2020, date: '04/10/2020' },
@@ -223,19 +235,19 @@ export class DynamicPeakRate implements Rate {
     // Good Friday is always the Friday before Easter Sunday
     // Easter falls on the first Sunday after the Full Moon date
     var f = Math.floor,
-		// Golden Number - 1
-		G = year % 19,
-		C = f(year / 100),
-		// related to Epact
-		H = (C - f(C / 4) - f((8 * C + 13)/25) + 19 * G + 15) % 30,
-		// number of days from 21 March to the Paschal full moon
-		I = H - f(H/28) * (1 - f(29/(H + 1)) * f((21-G)/11)),
-		// weekday for the Paschal full moon
-		J = (year + f(year / 4) + I + 2 - C + f(C / 4)) % 7,
-		// number of days from 21 March to the Sunday on or before the Paschal full moon
-		L = I - J,
-		month = 3 + f((L + 40)/44),
-		day = L + 28 - 31 * f(month / 4);
+      // Golden Number - 1
+      G = year % 19,
+      C = f(year / 100),
+      // related to Epact
+      H = (C - f(C / 4) - f((8 * C + 13) / 25) + 19 * G + 15) % 30,
+      // number of days from 21 March to the Paschal full moon
+      I = H - f(H / 28) * (1 - f(29 / (H + 1)) * f((21 - G) / 11)),
+      // weekday for the Paschal full moon
+      J = (year + f(year / 4) + I + 2 - C + f(C / 4)) % 7,
+      // number of days from 21 March to the Sunday on or before the Paschal full moon
+      L = I - J,
+      month = 3 + f((L + 40) / 44),
+      day = L + 28 - 31 * f(month / 4);
 
     const d = new Date();
     d.setFullYear(year);

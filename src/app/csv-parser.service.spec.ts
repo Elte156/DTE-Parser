@@ -30,8 +30,7 @@ describe('CsvParserService', () => {
     '"07/01/2022","1:00 AM","0.777"';
 
   const mockCsvWithMissingColumns =
-    '"06/24/2022","12:00 AM","1.55"\n' +
-    '"06/24/2022","1:00 AM","0.666"';
+    '"06/24/2022","12:00 AM","1.55"\n' + '"06/24/2022","1:00 AM","0.666"';
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -47,7 +46,7 @@ describe('CsvParserService', () => {
       {
         'Account Number': '0000 000 0000 0',
         'Meter Number': '0000000',
-        'Day': '06/24/2022',
+        Day: '06/24/2022',
         'Hour of Day': '12:00 AM',
         'Hourly Total': '1.11',
         'Daily Total': '18.7810',
@@ -56,7 +55,7 @@ describe('CsvParserService', () => {
       {
         'Account Number': '0000 000 0000 0',
         'Meter Number': '0000000',
-        'Day': '06/24/2022',
+        Day: '06/24/2022',
         'Hour of Day': '1:00 AM',
         'Hourly Total': '0.999',
         'Daily Total': '18.7810',

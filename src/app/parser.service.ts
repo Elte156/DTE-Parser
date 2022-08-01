@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { DayUsage } from './day-usage';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ParserService {
-
-  constructor() { }
+  constructor() {}
 
   public listYears(data: DayUsage[]): number[] {
     const found = data.map((item) => {
@@ -42,21 +41,34 @@ export class ParserService {
     }, 0);
   }
 
-  public filterByYearAndMonth(data: DayUsage[], year: number, month: number|number[]): DayUsage[] {
+  public filterByYearAndMonth(
+    data: DayUsage[],
+    year: number,
+    month: number | number[]
+  ): DayUsage[] {
     const months = Array.isArray(month) ? month : [month];
     return data.filter((item) => {
-      return item.date.getFullYear() === year && months.includes(item.date.getMonth());
+      return (
+        item.date.getFullYear() === year &&
+        months.includes(item.date.getMonth())
+      );
     });
   }
 
-  public filterByDayOfWeek(data: DayUsage[], dayOfWeek: number|number[]): DayUsage[] {
+  public filterByDayOfWeek(
+    data: DayUsage[],
+    dayOfWeek: number | number[]
+  ): DayUsage[] {
     const input = Array.isArray(dayOfWeek) ? dayOfWeek : [dayOfWeek];
     return data.filter((item) => {
       return input.includes(item.date.getDay());
     });
   }
 
-  public filterByHourOfDay(data: DayUsage[], hourOfDay: number|number[]): DayUsage[] {
+  public filterByHourOfDay(
+    data: DayUsage[],
+    hourOfDay: number | number[]
+  ): DayUsage[] {
     const input = Array.isArray(hourOfDay) ? hourOfDay : [hourOfDay];
     return data.filter((item) => {
       return input.includes(item.date.getHours());

@@ -3,7 +3,7 @@ import { Options, parse } from 'csv-parse/browser/esm/sync';
 import { DayUsage } from './day-usage';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CsvParserService {
   /**
@@ -11,8 +11,7 @@ export class CsvParserService {
    */
   public static readonly FLOAT_TESTER = /[+-]?([0-9]*[.])?[0-9]+/;
 
-  constructor() {
-  }
+  constructor() {}
 
   public parseCsvString(csv: string): Record<string, string>[] {
     const options: Options = {

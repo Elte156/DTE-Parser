@@ -1,8 +1,8 @@
-import { Rate } from "./rate";
+import { Rate } from './rate';
 
 export class TimeOfDayRate implements Rate {
   public static readonly RATE_OFF_PEAK = 0.12;
-  public static readonly RATE_ON_PEAK_COLD = 0.20;
+  public static readonly RATE_ON_PEAK_COLD = 0.2;
   public static readonly RATE_ON_PEAK_HOT = 0.23;
 
   getRateName(datetime: Date): string {
@@ -24,10 +24,9 @@ export class TimeOfDayRate implements Rate {
 
     // Off peak hour check
     if (datetime.getHours() >= 11 && datetime.getHours() < 19) {
-      if (datetime.getMonth() >= 5 && datetime.getMonth() <= 9 ) {
+      if (datetime.getMonth() >= 5 && datetime.getMonth() <= 9) {
         return TimeOfDayRate.RATE_ON_PEAK_HOT;
-      }
-      else {
+      } else {
         return TimeOfDayRate.RATE_ON_PEAK_COLD;
       }
     }

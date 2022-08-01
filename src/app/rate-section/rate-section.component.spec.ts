@@ -8,9 +8,8 @@ describe('RateSectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RateSectionComponent ]
-    })
-    .compileComponents();
+      declarations: [RateSectionComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

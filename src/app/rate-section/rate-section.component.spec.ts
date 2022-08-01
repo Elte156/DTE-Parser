@@ -22,4 +22,9 @@ describe('RateSectionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should load mock data', () => {
+    component.loadMockData();
+    expect(component.results).toBeTruthy();
+  });
 });

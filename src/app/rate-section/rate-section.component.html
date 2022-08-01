@@ -1,2 +1,3 @@
 <h2>Results</h2>
+<button (click)="loadMockData()">Load Mock Data</button>
 <app-rate-result *ngFor="let result of results" [title]="result.title" [costMonthly]="result.costMonthly" [costYearly]="result.costYearly"></app-rate-result>

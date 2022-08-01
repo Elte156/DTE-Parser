@@ -11,6 +11,9 @@ export class RateSectionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  loadMockData(): void {
     this.results = [
       {title: 'EV Plan', costMonthly: 45, costYearly: 500},
       {title: 'Time of Use Plan', costMonthly: 11, costYearly: 300},

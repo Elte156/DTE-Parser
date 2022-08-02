@@ -1,4 +1,4 @@
-import { Rate } from "./rate";
+import { Rate } from './rate';
 
 export class EvRate implements Rate {
   public static readonly RATE_OFF_PEAK = 0.11;

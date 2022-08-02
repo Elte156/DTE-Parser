@@ -36,7 +36,7 @@ describe('ParserService', () => {
     it('should get single specific [year] and [multiple months] from a given array', () => {
       const expected = 228; // (24 entries per day * 8 days) + 24 august + 12 august
 
-      const actual = service.filterByYearAndMonth(mockData, 2022, [6,7]);
+      const actual = service.filterByYearAndMonth(mockData, 2022, [6, 7]);
 
       expect(actual.length).toEqual(expected);
     });
@@ -72,7 +72,7 @@ describe('ParserService', () => {
     it('should get multiple specific hour items from a given array', () => {
       const expected = 21; // 10 days in mock with 3pm + 11 days with 1am
 
-      const actual = service.filterByHourOfDay(mockData, [15,1]);
+      const actual = service.filterByHourOfDay(mockData, [15, 1]);
 
       expect(actual.length).toEqual(expected);
     });
@@ -91,9 +91,9 @@ describe('ParserService', () => {
 
   it('should list available months in given array', () => {
     const input: DayUsage[] = [
-      {date: new Date('2021-01-01T00:00:00'), energyHour: 1.110},
-      {date: new Date('2022-05-01T00:00:00'), energyHour: 1.220},
-      {date: new Date('2023-12-01T00:00:00'), energyHour: 1.220},
+      { date: new Date('2021-01-01T00:00:00'), energyHour: 1.11 },
+      { date: new Date('2022-05-01T00:00:00'), energyHour: 1.22 },
+      { date: new Date('2023-12-01T00:00:00'), energyHour: 1.22 },
     ];
     const expected = [2021, 2022, 2023];
 
@@ -104,9 +104,9 @@ describe('ParserService', () => {
 
   it('should list available months in given array', () => {
     const input: DayUsage[] = [
-      {date: new Date('2021-01-01T00:00:00'), energyHour: 1.110},
-      {date: new Date('2022-05-01T00:00:00'), energyHour: 1.220},
-      {date: new Date('2023-12-01T00:00:00'), energyHour: 1.220},
+      { date: new Date('2021-01-01T00:00:00'), energyHour: 1.11 },
+      { date: new Date('2022-05-01T00:00:00'), energyHour: 1.22 },
+      { date: new Date('2023-12-01T00:00:00'), energyHour: 1.22 },
     ];
     const expected = [0, 4, 11];
 
@@ -117,9 +117,9 @@ describe('ParserService', () => {
 
   it('should list available days in given array', () => {
     const input: DayUsage[] = [
-      {date: new Date('2022-01-01T00:00:00'), energyHour: 1.110},
-      {date: new Date('2022-01-02T00:00:00'), energyHour: 1.220},
-      {date: new Date('2022-01-03T00:00:00'), energyHour: 1.220},
+      { date: new Date('2022-01-01T00:00:00'), energyHour: 1.11 },
+      { date: new Date('2022-01-02T00:00:00'), energyHour: 1.22 },
+      { date: new Date('2022-01-03T00:00:00'), energyHour: 1.22 },
     ];
     const expected = [6, 0, 1];
 
@@ -130,9 +130,9 @@ describe('ParserService', () => {
 
   it('should list available hours in given array', () => {
     const input: DayUsage[] = [
-      {date: new Date('2022-01-01T00:00:00'), energyHour: 1.110},
-      {date: new Date('2022-01-02T11:00:00'), energyHour: 1.220},
-      {date: new Date('2022-01-03T21:00:00'), energyHour: 1.220},
+      { date: new Date('2022-01-01T00:00:00'), energyHour: 1.11 },
+      { date: new Date('2022-01-02T11:00:00'), energyHour: 1.22 },
+      { date: new Date('2022-01-03T21:00:00'), energyHour: 1.22 },
     ];
     const expected = [0, 11, 21];
 

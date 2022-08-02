@@ -1,4 +1,4 @@
 export interface DayUsage {
-  date: Date,
-  energyHour: number,
+  date: Date;
+  energyHour: number;
 }

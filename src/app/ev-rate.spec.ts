@@ -92,33 +92,109 @@ describe('EvRate', () => {
 
   describe('getRateDescription', () => {
     const testCases = [
-      { date: new Date('01/08/2022 12:00:00 AM'), result: 'Off-Peak (11PM-9AM)' }, // Saturday
-      { date: new Date('01/08/2022 08:59:59 AM'), result: 'Off-Peak (11PM-9AM)' },
-      { date: new Date('01/08/2022 09:00:00 AM'), result: 'Off-Peak (11PM-9AM)' },
-      { date: new Date('01/08/2022 10:59:59 PM'), result: 'Off-Peak (11PM-9AM)' },
-      { date: new Date('01/08/2022 11:00:00 PM'), result: 'Off-Peak (11PM-9AM)' },
-      { date: new Date('01/08/2022 11:59:59 PM'), result: 'Off-Peak (11PM-9AM)' },
+      // Saturday
+      {
+        date: new Date('01/08/2022 12:00:00 AM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/08/2022 08:59:59 AM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/08/2022 09:00:00 AM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/08/2022 10:59:59 PM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/08/2022 11:00:00 PM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/08/2022 11:59:59 PM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
 
-      { date: new Date('01/09/2022 12:00:00 AM'), result: 'Off-Peak (11PM-9AM)' }, // Sunday
-      { date: new Date('01/09/2022 08:59:59 AM'), result: 'Off-Peak (11PM-9AM)' },
-      { date: new Date('01/09/2022 09:00:00 AM'), result: 'Off-Peak (11PM-9AM)' },
-      { date: new Date('01/09/2022 10:59:59 PM'), result: 'Off-Peak (11PM-9AM)' },
-      { date: new Date('01/09/2022 11:00:00 PM'), result: 'Off-Peak (11PM-9AM)' },
-      { date: new Date('01/09/2022 11:59:59 PM'), result: 'Off-Peak (11PM-9AM)' },
+      // Sunday
+      {
+        date: new Date('01/09/2022 12:00:00 AM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/09/2022 08:59:59 AM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/09/2022 09:00:00 AM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/09/2022 10:59:59 PM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/09/2022 11:00:00 PM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/09/2022 11:59:59 PM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
 
-      { date: new Date('01/03/2022 12:00:00 AM'), result: 'Off-Peak (11PM-9AM)' }, // Monday
-      { date: new Date('01/03/2022 08:59:59 AM'), result: 'Off-Peak (11PM-9AM)' },
-      { date: new Date('01/03/2022 09:00:00 AM'), result: 'On-Peak (9AM-11PM)' },
-      { date: new Date('01/03/2022 10:59:59 PM'), result: 'On-Peak (9AM-11PM)' },
-      { date: new Date('01/03/2022 11:00:00 PM'), result: 'Off-Peak (11PM-9AM)' },
-      { date: new Date('01/03/2022 11:59:59 PM'), result: 'Off-Peak (11PM-9AM)' },
+      // Monday
+      {
+        date: new Date('01/03/2022 12:00:00 AM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/03/2022 08:59:59 AM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/03/2022 09:00:00 AM'),
+        result: 'On-Peak (9AM-11PM)',
+      },
+      {
+        date: new Date('01/03/2022 10:59:59 PM'),
+        result: 'On-Peak (9AM-11PM)',
+      },
+      {
+        date: new Date('01/03/2022 11:00:00 PM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/03/2022 11:59:59 PM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
 
-      { date: new Date('01/07/2022 12:00:00 AM'), result: 'Off-Peak (11PM-9AM)' }, // Friday
-      { date: new Date('01/07/2022 08:59:59 AM'), result: 'Off-Peak (11PM-9AM)' },
-      { date: new Date('01/07/2022 09:00:00 AM'), result: 'On-Peak (9AM-11PM)' },
-      { date: new Date('01/07/2022 10:59:59 PM'), result: 'On-Peak (9AM-11PM)' },
-      { date: new Date('01/07/2022 11:00:00 PM'), result: 'Off-Peak (11PM-9AM)' },
-      { date: new Date('01/07/2022 11:59:59 PM'), result: 'Off-Peak (11PM-9AM)' },
+      // Friday
+      {
+        date: new Date('01/07/2022 12:00:00 AM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/07/2022 08:59:59 AM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/07/2022 09:00:00 AM'),
+        result: 'On-Peak (9AM-11PM)',
+      },
+      {
+        date: new Date('01/07/2022 10:59:59 PM'),
+        result: 'On-Peak (9AM-11PM)',
+      },
+      {
+        date: new Date('01/07/2022 11:00:00 PM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
+      {
+        date: new Date('01/07/2022 11:59:59 PM'),
+        result: 'Off-Peak (11PM-9AM)',
+      },
     ];
 
     testCases.forEach((test) => {

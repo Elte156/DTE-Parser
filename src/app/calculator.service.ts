@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { ParserService } from './parser.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CalculatorService {
-  constructor(
-    protected parserService: ParserService,
-  ) { }
+  constructor(protected parserService: ParserService) {}
 }

@@ -16,6 +16,46 @@ describe('ParserService', () => {
     expect(service).toBeTruthy();
   });
 
+  describe('calculate', () => {
+    it('should produce 4 rates', () => {
+      const input: DayUsage[] = [
+        { date: new Date('2021-01-01T00:00:00'), energyHour: 1.11 },
+        { date: new Date('2022-05-01T00:00:00'), energyHour: 1.22 },
+        { date: new Date('2023-12-01T00:00:00'), energyHour: 1.22 },
+      ];
+      service.results$.subscribe((result) => {
+        // TODO: This can be better
+        expect(result.title.length).toBeGreaterThan(0);
+        expect(result.costMonthly).toBeGreaterThan(0);
+        expect(result.costYearly).toBeGreaterThan(0);
+      });
+
+      service.calculate(input);
+    });
+  });
+
+  xdescribe('parse details', () => {
+    it('should list months from most KWH to least KWH', () => {
+      fail();
+    });
+
+    it('should list days from most KWH to least KWH', () => {
+      fail();
+    });
+
+    it('should list hours from most KWH to least KWH', () => {
+      fail();
+    });
+
+    it('should list hours (weekdays only) from most KWH to least KWH', () => {
+      fail();
+    });
+
+    it('should list hours (weekends only) from most KWH to least KWH', () => {
+      fail();
+    });
+  });
+
   it('should sum up the energy usage for a given array', () => {
     const expected = 389.7100000000009;
 
@@ -95,7 +135,7 @@ describe('ParserService', () => {
       { date: new Date('2022-05-01T00:00:00'), energyHour: 1.22 },
       { date: new Date('2023-12-01T00:00:00'), energyHour: 1.22 },
     ];
-    const expected = [2021, 2022, 2023];
+    const expected = [2023, 2022, 2021];
 
     const actual = service.listYears(input);
 

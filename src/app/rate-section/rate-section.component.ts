@@ -1,19 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import mockFullData from '../data-full.fixture';
+import { ParserService } from '../parser.service';
+import { Result } from '../result';
 
 @Component({
   selector: 'app-rate-section',
   templateUrl: './rate-section.component.html',
   styleUrls: ['./rate-section.component.scss'],
 })
-export class RateSectionComponent {
-  results: { title: string; costMonthly: number; costYearly: number }[] = [];
+export class RateSectionComponent implements OnDestroy {
+  results: Result[] = [];
+  resultsSub: Subscription;
 
-  constructor() {}
+  constructor(private parserService: ParserService) {
+    this.resultsSub = this.parserService.results$.subscribe((results) => {
+      this.results.push(results);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.resultsSub.unsubscribe();
+  }
 
   loadMockData(): void {
-    this.results = [
-      { title: 'EV Plan', costMonthly: 45, costYearly: 500 },
-      { title: 'Time of Use Plan', costMonthly: 11, costYearly: 300 },
-    ];
+    const data = mockFullData;
+    this.parserService.calculate(data);
   }
 }

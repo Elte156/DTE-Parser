@@ -24,6 +24,12 @@ describe('RateSectionComponent', () => {
 
   it('should load mock data', () => {
     component.loadMockData();
-    expect(component.results).toBeTruthy();
+    expect(component.results.length).toEqual(4);
+  });
+
+  it('should load mock data twice', () => {
+    component.loadMockData();
+    component.loadMockData();
+    expect(component.results.length).toEqual(8);
   });
 });

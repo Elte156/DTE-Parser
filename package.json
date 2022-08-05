@@ -1,6 +1,16 @@
 {
-  "name": "dte-stats",
-  "version": "0.0.0",
+  "name": "dte-parser",
+  "description": "Parse your energy usage provided by DTE Energy and see a cost analysis to help you understand which electric plan is best for you.",
+  "homepage": "https://dteparser.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Elte156/DTE-Parser.git"
+  },
+  "version": "0.0.1",
+  "author": {
+    "name": "Tony Pagaduan"
+  },
+  "license": "Apache-2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

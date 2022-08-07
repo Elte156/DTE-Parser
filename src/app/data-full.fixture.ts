@@ -1,6 +1,6 @@
 import { DayUsage } from './day-usage';
 
-const mockFullData: DayUsage[] = [
+export const mockBilling2021: DayUsage[] = [
   { date: new Date('08/01/2021 12:00 AM'), energyHour: 0.574 },
   { date: new Date('08/01/2021 1:00 AM'), energyHour: 0.545 },
   { date: new Date('08/01/2021 2:00 AM'), energyHour: 0.563 },
@@ -385,6 +385,9 @@ const mockFullData: DayUsage[] = [
   { date: new Date('08/16/2021 9:00 PM'), energyHour: 0.886 },
   { date: new Date('08/16/2021 10:00 PM'), energyHour: 1.372 },
   { date: new Date('08/16/2021 11:00 PM'), energyHour: 0.749 },
+];
+
+export const mockBillingAug2021: DayUsage[] = [
   { date: new Date('08/17/2021 12:00 AM'), energyHour: 0.702 },
   { date: new Date('08/17/2021 1:00 AM'), energyHour: 0.685 },
   { date: new Date('08/17/2021 2:00 AM'), energyHour: 0.609 },
@@ -1081,6 +1084,9 @@ const mockFullData: DayUsage[] = [
   { date: new Date('09/16/2021 9:00 PM'), energyHour: 1.111 },
   { date: new Date('09/16/2021 10:00 PM'), energyHour: 0.999 },
   { date: new Date('09/16/2021 11:00 PM'), energyHour: 1.127 },
+];
+
+export const mockBillingSep2021: DayUsage[] = [
   { date: new Date('09/17/2021 12:00 AM'), energyHour: 0.681 },
   { date: new Date('09/17/2021 1:00 AM'), energyHour: 0.552 },
   { date: new Date('09/17/2021 2:00 AM'), energyHour: 0.534 },
@@ -1777,6 +1783,9 @@ const mockFullData: DayUsage[] = [
   { date: new Date('10/15/2021 9:00 PM'), energyHour: 0.595 },
   { date: new Date('10/15/2021 10:00 PM'), energyHour: 0.519 },
   { date: new Date('10/15/2021 11:00 PM'), energyHour: 0.533 },
+];
+
+export const mockBillingOct2021: DayUsage[] = [
   { date: new Date('10/16/2021 12:00 AM'), energyHour: 0.386 },
   { date: new Date('10/16/2021 1:00 AM'), energyHour: 0.38 },
   { date: new Date('10/16/2021 2:00 AM'), energyHour: 0.399 },
@@ -2521,6 +2530,9 @@ const mockFullData: DayUsage[] = [
   { date: new Date('11/15/2021 9:00 PM'), energyHour: 1.433 },
   { date: new Date('11/15/2021 10:00 PM'), energyHour: 0.574 },
   { date: new Date('11/15/2021 11:00 PM'), energyHour: 0.506 },
+];
+
+export const mockBillingNov2021: DayUsage[] = [
   { date: new Date('11/16/2021 12:00 AM'), energyHour: 0.514 },
   { date: new Date('11/16/2021 1:00 AM'), energyHour: 0.444 },
   { date: new Date('11/16/2021 2:00 AM'), energyHour: 0.459 },
@@ -3265,6 +3277,9 @@ const mockFullData: DayUsage[] = [
   { date: new Date('12/16/2021 9:00 PM'), energyHour: 0.767 },
   { date: new Date('12/16/2021 10:00 PM'), energyHour: 1.292 },
   { date: new Date('12/16/2021 11:00 PM'), energyHour: 1.032 },
+];
+
+export const mockBillingDec2021: DayUsage[] = [
   { date: new Date('12/17/2021 12:00 AM'), energyHour: 0.454 },
   { date: new Date('12/17/2021 1:00 AM'), energyHour: 0.489 },
   { date: new Date('12/17/2021 2:00 AM'), energyHour: 0.56 },
@@ -3961,6 +3976,9 @@ const mockFullData: DayUsage[] = [
   { date: new Date('01/14/2022 9:00 PM'), energyHour: 0.75 },
   { date: new Date('01/14/2022 10:00 PM'), energyHour: 1.066 },
   { date: new Date('01/14/2022 11:00 PM'), energyHour: 0.881 },
+];
+
+export const mockBillingJan: DayUsage[] = [
   { date: new Date('01/15/2022 12:00 AM'), energyHour: 0.921 },
   { date: new Date('01/15/2022 1:00 AM'), energyHour: 0.635 },
   { date: new Date('01/15/2022 2:00 AM'), energyHour: 0.62 },
@@ -4729,6 +4747,9 @@ const mockFullData: DayUsage[] = [
   { date: new Date('02/15/2022 9:00 PM'), energyHour: 0.664 },
   { date: new Date('02/15/2022 10:00 PM'), energyHour: 0.609 },
   { date: new Date('02/15/2022 11:00 PM'), energyHour: 0.764 },
+];
+
+export const mockBillingFeb: DayUsage[] = [
   { date: new Date('02/16/2022 12:00 AM'), energyHour: 0.6 },
   { date: new Date('02/16/2022 1:00 AM'), energyHour: 0.441 },
   { date: new Date('02/16/2022 2:00 AM'), energyHour: 0.446 },
@@ -5448,6 +5469,9 @@ const mockFullData: DayUsage[] = [
   { date: new Date('03/17/2022 9:00 PM'), energyHour: 0.896 },
   { date: new Date('03/17/2022 10:00 PM'), energyHour: 0.602 },
   { date: new Date('03/17/2022 11:00 PM'), energyHour: 0.381 },
+];
+
+export const mockBillingMar: DayUsage[] = [
   { date: new Date('03/18/2022 12:00 AM'), energyHour: 0.385 },
   { date: new Date('03/18/2022 1:00 AM'), energyHour: 0.383 },
   { date: new Date('03/18/2022 2:00 AM'), energyHour: 0.32 },
@@ -6216,6 +6240,9 @@ const mockFullData: DayUsage[] = [
   { date: new Date('04/18/2022 9:00 PM'), energyHour: 0.899 },
   { date: new Date('04/18/2022 10:00 PM'), energyHour: 1.376 },
   { date: new Date('04/18/2022 11:00 PM'), energyHour: 1.512 },
+];
+
+export const mockBillingApr: DayUsage[] = [
   { date: new Date('04/19/2022 12:00 AM'), energyHour: 0.711 },
   { date: new Date('04/19/2022 1:00 AM'), energyHour: 0.599 },
   { date: new Date('04/19/2022 2:00 AM'), energyHour: 0.61 },
@@ -6912,6 +6939,9 @@ const mockFullData: DayUsage[] = [
   { date: new Date('05/17/2022 9:00 PM'), energyHour: 0.754 },
   { date: new Date('05/17/2022 10:00 PM'), energyHour: 1.002 },
   { date: new Date('05/17/2022 11:00 PM'), energyHour: 0.849 },
+];
+
+export const mockBillingMay: DayUsage[] = [
   { date: new Date('05/18/2022 12:00 AM'), energyHour: 0.908 },
   { date: new Date('05/18/2022 1:00 AM'), energyHour: 1.01 },
   { date: new Date('05/18/2022 2:00 AM'), energyHour: 0.929 },
@@ -7608,6 +7638,9 @@ const mockFullData: DayUsage[] = [
   { date: new Date('06/16/2022 9:00 PM'), energyHour: 2.266 },
   { date: new Date('06/16/2022 10:00 PM'), energyHour: 2.714 },
   { date: new Date('06/16/2022 11:00 PM'), energyHour: 2.325 },
+];
+
+export const mockBillingJun: DayUsage[] = [
   { date: new Date('06/17/2022 12:00 AM'), energyHour: 2.091 },
   { date: new Date('06/17/2022 1:00 AM'), energyHour: 1.423 },
   { date: new Date('06/17/2022 2:00 AM'), energyHour: 0.812 },
@@ -8352,6 +8385,9 @@ const mockFullData: DayUsage[] = [
   { date: new Date('07/18/2022 9:00 PM'), energyHour: 1.859 },
   { date: new Date('07/18/2022 10:00 PM'), energyHour: 1.516 },
   { date: new Date('07/18/2022 11:00 PM'), energyHour: 2.644 },
+];
+
+export const mockBillingJulPartial: DayUsage[] = [
   { date: new Date('07/19/2022 12:00 AM'), energyHour: 2.042 },
   { date: new Date('07/19/2022 1:00 AM'), energyHour: 1.544 },
   { date: new Date('07/19/2022 2:00 AM'), energyHour: 0.98 },
@@ -8498,4 +8534,30 @@ const mockFullData: DayUsage[] = [
   { date: new Date('07/24/2022 11:00 PM'), energyHour: 2.082 },
 ];
 
-export default mockFullData;
+export const mockFullData: DayUsage[] = [
+  ...mockBilling2021,
+
+  ...mockBillingAug2021,
+
+  ...mockBillingSep2021,
+
+  ...mockBillingOct2021,
+
+  ...mockBillingNov2021,
+
+  ...mockBillingDec2021,
+
+  ...mockBillingJan,
+
+  ...mockBillingFeb,
+
+  ...mockBillingMar,
+
+  ...mockBillingApr,
+
+  ...mockBillingMay,
+
+  ...mockBillingJun,
+
+  ...mockBillingJulPartial,
+];

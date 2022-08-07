@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import mockFullData from '../data-full.fixture';
+import { mockFullData } from '../data-full.fixture';
 import { ParserService } from '../parser.service';
 import { Result } from '../result';
 

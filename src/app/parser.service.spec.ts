@@ -1,4 +1,17 @@
 import { TestBed } from '@angular/core/testing';
+import {
+  mockBillingAug2021,
+  mockBillingSep2021,
+  mockBillingOct2021,
+  mockBillingNov2021,
+  mockBillingDec2021,
+  mockBillingJan,
+  mockBillingFeb,
+  mockBillingMar,
+  mockBillingApr,
+  mockBillingMay,
+  mockBillingJun,
+} from './data-full.fixture';
 import { DayUsage } from './day-usage';
 import mockData from './day-usage.fixture';
 
@@ -179,5 +192,28 @@ describe('ParserService', () => {
     const actual = service.listHours(input);
 
     expect(actual).toEqual(expected);
+  });
+
+  describe('Sum Audit', () => {
+    const testCases = [
+      { month: 'Aug2021', data: mockBillingAug2021, energyHour: 563 }, // Total = 593, No Data = 563
+      { month: 'Sep2021', data: mockBillingSep2021, energyHour: 379 },
+      { month: 'Oct2021', data: mockBillingOct2021, energyHour: 455 },
+      { month: 'Nov2021', data: mockBillingNov2021, energyHour: 548 },
+      { month: 'Dec2021', data: mockBillingDec2021, energyHour: 469 },
+      { month: 'Jan2022', data: mockBillingJan, energyHour: 500 },
+      { month: 'Feb2022', data: mockBillingFeb, energyHour: 608 },
+      { month: 'Mar2022', data: mockBillingMar, energyHour: 948 },
+      { month: 'Apr2022', data: mockBillingApr, energyHour: 1018 },
+      { month: 'May2022', data: mockBillingMay, energyHour: 961 }, // Total = 987, No Data = 961
+      { month: 'Jun2022', data: mockBillingJun, energyHour: 1086 }, // Total = 1115, No Data = 1086
+    ];
+
+    testCases.forEach((test) => {
+      it(`should get match the energy usage sum of month: ${test.month}`, () => {
+        const actual = service.sum(test.data);
+        expect(Math.round(actual)).toEqual(test.energyHour);
+      });
+    });
   });
 });

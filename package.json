@@ -20,7 +20,9 @@
     "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "lint": "ng lint",
     "format": "npx prettier --write \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\"",
-    "format:ci": "npx prettier --check \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\""
+    "format:ci": "npx prettier --check \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\"",
+    "stylelint": "npx stylelint \"**/*.scss\" --fix",
+    "stylelint:ci": "npx stylelint \"**/*.scss\""
   },
   "private": true,
   "dependencies": {

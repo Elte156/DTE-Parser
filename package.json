@@ -1,12 +1,28 @@
 {
-  "name": "dte-stats",
-  "version": "0.0.0",
+  "name": "dte-parser",
+  "description": "Parse your energy usage provided by DTE Energy and see a cost analysis to help you understand which electric plan is best for you.",
+  "homepage": "https://dteparser.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Elte156/DTE-Parser.git"
+  },
+  "version": "0.0.1",
+  "author": {
+    "name": "Tony Pagaduan"
+  },
+  "license": "Apache-2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
+    "lint": "ng lint",
+    "format": "npx prettier --write \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\"",
+    "format:ci": "npx prettier --check \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\"",
+    "stylelint": "npx stylelint \"**/*.scss\" --fix",
+    "stylelint:ci": "npx stylelint \"**/*.scss\""
   },
   "private": true,
   "dependencies": {
@@ -20,22 +36,37 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "csv-parse": "^5.3.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.2.3",
+    "@angular-eslint/builder": "13.5.0",
+    "@angular-eslint/eslint-plugin": "13.5.0",
+    "@angular-eslint/eslint-plugin-template": "13.5.0",
+    "@angular-eslint/schematics": "13.5.0",
+    "@angular-eslint/template-parser": "13.5.0",
     "@angular/cli": "~13.2.3",
     "@angular/compiler-cli": "~13.2.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "5.27.1",
+    "@typescript-eslint/parser": "5.27.1",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "prettier": "^2.7.1",
+    "stylelint": "^14.11.0",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard-scss": "^5.0.0",
     "typescript": "~4.5.2"
   }
 }

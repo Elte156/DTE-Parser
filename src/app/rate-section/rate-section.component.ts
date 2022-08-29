@@ -7,7 +7,6 @@ import { Result } from '../result';
 @Component({
   selector: 'app-rate-section',
   templateUrl: './rate-section.component.html',
-  styleUrls: ['./rate-section.component.scss'],
 })
 export class RateSectionComponent implements OnDestroy {
   results: Result[] = [];

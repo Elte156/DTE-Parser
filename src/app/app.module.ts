@@ -9,7 +9,11 @@ import { RateSectionComponent } from './rate-section/rate-section.component';
 
 @NgModule({
   declarations: [AppComponent, RateResultComponent, RateSectionComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, MatButtonModule],
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserAnimationsModule,
+    MatButtonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

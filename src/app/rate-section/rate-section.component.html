@@ -1,5 +1,9 @@
 <h2>Results</h2>
-<button (click)="loadMockData()">Load Mock Data</button>
+
+<button mat-raised-button color="primary" (click)="loadMockData()">
+  Load Mock Data
+</button>
+
 <app-rate-result
   *ngFor="let result of results"
   [title]="result.title"

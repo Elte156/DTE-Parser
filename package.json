@@ -22,7 +22,11 @@
     "format": "npx prettier --write \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\"",
     "format:ci": "npx prettier --check \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\"",
     "stylelint": "npx stylelint \"**/*.scss\" --fix",
-    "stylelint:ci": "npx stylelint \"**/*.scss\""
+    "stylelint:ci": "npx stylelint \"**/*.scss\"",
+    "dev:ssr": "ng run dte-stats:serve-ssr",
+    "serve:ssr": "node dist/dte-stats/server/main.js",
+    "build:ssr": "ng build && ng run dte-stats:server",
+    "prerender": "ng run dte-stats:prerender"
   },
   "private": true,
   "dependencies": {
@@ -35,8 +39,11 @@
     "@angular/material": "^13.3.9",
     "@angular/platform-browser": "~13.3.11",
     "@angular/platform-browser-dynamic": "~13.3.11",
+    "@angular/platform-server": "~13.3.11",
     "@angular/router": "~13.3.11",
+    "@nguniversal/express-engine": "^13.1.1",
     "csv-parse": "^5.3.0",
+    "express": "^4.15.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -50,6 +57,8 @@
     "@angular-eslint/template-parser": "13.5.0",
     "@angular/cli": "~13.3.9",
     "@angular/compiler-cli": "~13.3.11",
+    "@nguniversal/builders": "^13.1.1",
+    "@types/express": "^4.17.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.27.1",

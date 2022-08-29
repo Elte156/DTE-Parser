@@ -49,7 +49,7 @@ export class ParserService {
     const evCost: number[] = [];
     const evRate = new EvRate();
     const flatCost: number[] = [];
-    const flatRate = new FlatRate(0.19);
+    const flatRate = new FlatRate(0.193);
 
     // Loop through months
     for (const monthly of monthlyUsage) {

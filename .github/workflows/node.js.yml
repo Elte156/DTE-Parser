@@ -28,5 +28,6 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run format:ci
+    - run: npm run stylelint:ci
     - run: npm run lint
     - run: npm run test:prod

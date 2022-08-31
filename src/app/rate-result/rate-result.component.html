@@ -1,9 +1,11 @@
-<article>
-  <h1>{{ title }}</h1>
+<article class="rate-result">
+  <h3>{{ title }}</h3>
   <p>
-    <span>Monthly (Avg): </span><span>{{ costMonthly | currency }}</span>
+    <span class="rate-result__label">Monthly (Avg): </span>
+    <span class="rate-result__amount">{{ costMonthly | currency }}</span>
   </p>
   <p>
-    <span>Yearly (Avg): </span><span>{{ costYearly | currency }}</span>
+    <span class="rate-result__label">Yearly (Avg): </span>
+    <span class="rate-result__amount">{{ costYearly | currency }}</span>
   </p>
 </article>

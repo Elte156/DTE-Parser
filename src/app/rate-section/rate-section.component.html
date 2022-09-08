@@ -1,12 +1,17 @@
-<h2>Results</h2>
+<div class="rate-section__button-load">
+  <button mat-raised-button color="primary" (click)="loadMockData()">
+    Load Mock Data
+  </button>
+</div>
 
-<button mat-raised-button color="primary" (click)="loadMockData()">
-  Load Mock Data
-</button>
-
-<app-rate-result
-  *ngFor="let result of results"
-  [title]="result.title"
-  [costMonthly]="result.costMonthly"
-  [costYearly]="result.costYearly"
-></app-rate-result>
+<mat-card class="rate-section__card">
+  <mat-card-title>Results</mat-card-title>
+  <mat-card-content>
+    <app-rate-result
+      *ngFor="let result of results"
+      [title]="result.title"
+      [costMonthly]="result.costMonthly"
+      [costYearly]="result.costYearly"
+    ></app-rate-result>
+  </mat-card-content>
+</mat-card>

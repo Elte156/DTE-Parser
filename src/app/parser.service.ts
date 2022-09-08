@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { DayUsage } from './day-usage';
-import { DynamicPeakRate } from './dynamic-peak-rate';
-import { EvRate } from './ev-rate';
-import { FlatRate } from './flat-rate';
+import { DynamicPeakRate } from './rate/dynamic-peak-rate';
+import { EvRate } from './rate/ev-rate';
+import { FlatRate } from './rate/flat-rate';
 import { MonthUsage } from './month-usage';
 import { Result } from './result';
-import { TimeOfDayRate } from './time-of-day-rate';
+import { TimeOfDayRate } from './rate/time-of-day-rate';
 
 @Injectable({
   providedIn: 'root',

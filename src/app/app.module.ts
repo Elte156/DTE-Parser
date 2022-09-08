@@ -15,6 +15,7 @@ import { CardInfoComponent } from './card-info/card-info.component';
 import { HeaderComponent } from './header/header.component';
 import { RateResultComponent } from './rate-result/rate-result.component';
 import { RateSectionComponent } from './rate-section/rate-section.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { RateSectionComponent } from './rate-section/rate-section.component';
     RateResultComponent,
     RateSectionComponent,
     CardInfoComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

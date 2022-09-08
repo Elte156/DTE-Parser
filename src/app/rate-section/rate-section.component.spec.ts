@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RateSectionComponent } from './rate-section.component';
 
@@ -9,6 +11,7 @@ describe('RateSectionComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RateSectionComponent],
+      imports: [BrowserAnimationsModule, MatSnackBarModule],
     }).compileComponents();
   });
 
